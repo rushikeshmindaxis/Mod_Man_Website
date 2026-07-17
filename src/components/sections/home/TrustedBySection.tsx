@@ -80,7 +80,7 @@ export function StatsSection() {
             <StaggerItem key={stat.id}>
               <div className="flex flex-col items-center">
                 <span className="font-display font-extrabold text-4xl sm:text-5xl lg:text-6xl text-white mb-2 tracking-tight flex items-baseline justify-center">
-                  <Counter end={stat.number} duration={2.5} />
+                  <Counter end={stat.value} duration={2.5} />
                   <span style={{ color: "var(--red-primary)" }}>+</span>
                 </span>
                 <span className="text-gray-400 font-accent font-semibold text-xs tracking-widest uppercase">

@@ -4,7 +4,8 @@ import { useEffect, useRef, useState } from "react";
 import { useInView } from "framer-motion";
 
 interface CounterProps {
-  value: number;
+  value?: number;
+  end?: number;
   suffix?: string;
   prefix?: string;
   duration?: number;
@@ -13,11 +14,14 @@ interface CounterProps {
 
 export default function Counter({
   value,
+  end,
   suffix = "",
   prefix = "",
   duration = 2000,
   className = "",
 }: CounterProps) {
+  const targetValue = end !== undefined ? end : (value !== undefined ? value : 0);
+  const animDuration = duration < 100 ? duration * 1000 : duration;
   const [count, setCount] = useState(0);
   const ref = useRef<HTMLSpanElement>(null);
   const isInView = useInView(ref, { once: true, amount: 0.5 });
@@ -32,14 +36,14 @@ export default function Counter({
 
     const animate = (currentTime: number) => {
       const elapsed = currentTime - startTime;
-      const progress = Math.min(elapsed / duration, 1);
+      const progress = Math.min(elapsed / animDuration, 1);
       const easedProgress = easeOut(progress);
-      setCount(Math.round(easedProgress * value));
+      setCount(Math.round(easedProgress * targetValue));
       if (progress < 1) requestAnimationFrame(animate);
     };
 
     requestAnimationFrame(animate);
-  }, [isInView, value, duration]);
+  }, [isInView, targetValue, animDuration]);
 
   return (
     <span ref={ref} className={className}>
