@@ -82,7 +82,7 @@ export function IndustriesSection() {
 
       {/* Row — slides right to left */}
       <div className="relative overflow-hidden">
-        <div className="flex gap-5 animate-marquee whitespace-nowrap">
+        <div className="flex gap-5 animate-marquee whitespace-nowrap" style={{ animationDuration: "10s" }}>
           {[...industries, ...industries].map((industry, i) => (
             <IndustryCard key={`r1-${industry.id}-${i}`} industry={industry} keyPrefix={`r1-${i}`} />
           ))}
