@@ -1,0 +1,334 @@
+"use client";
+
+import Link from "next/link";
+import Image from "next/image";
+import {
+  Phone,
+  Mail,
+  MapPin,
+  ArrowRight,
+} from "lucide-react";
+import { company } from "@/data/company";
+import { footerLinks } from "@/data/navigation";
+
+export default function Footer() {
+  const currentYear = new Date().getFullYear();
+
+  return (
+    <footer className="bg-[var(--black)] text-white relative overflow-hidden">
+      {/* Background pattern */}
+      <div className="absolute inset-0 bg-grid-pattern-dark opacity-40 pointer-events-none" />
+
+      {/* Red top accent line */}
+      <div
+        className="absolute top-0 left-0 right-0 h-1"
+        style={{
+          background: "linear-gradient(90deg, var(--red-primary), var(--red-deep))",
+        }}
+      />
+
+      {/* Background radial soft light to make it look premium */}
+      <div
+        className="absolute -top-40 -right-40 w-96 h-96 rounded-full opacity-10 pointer-events-none blur-3xl"
+        style={{ background: "var(--red-primary)" }}
+      />
+      <div
+        className="absolute -bottom-40 -left-40 w-96 h-96 rounded-full opacity-5 pointer-events-none blur-3xl"
+        style={{ background: "var(--red-primary)" }}
+      />
+
+      {/* Padding Container Enforced via Inline Styles to Bypass Tailwind Compile Cache locks */}
+      <div
+        className="container relative z-10"
+        style={{
+          paddingTop: "2.5rem",
+          paddingBottom: "2rem",
+        }}
+      >
+        
+        {/* ── Main Grid ──────────────────────────────────────────────── */}
+        <div
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 border-b border-white/10"
+          style={{ paddingBottom: "1.75rem" }}
+        >
+          
+          {/* Column 1: Brand & Philosophy */}
+          <div className="lg:col-span-3 flex flex-col items-start gap-6">
+            <Link href="/" className="block">
+              <Image
+                src="/logo.png"
+                alt="Mod Men"
+                width={160}
+                height={64}
+                className="h-14 w-auto"
+                style={{ filter: "brightness(0) saturate(100%) invert(18%) sepia(88%) saturate(5451%) hue-rotate(346deg) brightness(85%) contrast(85%)" }}
+              />
+            </Link>
+            <p className="text-gray-300 text-base leading-relaxed max-w-sm font-accent font-light tracking-wide">
+              {company.shortDescription}
+            </p>
+            
+            {/* Social Links */}
+            <div className="flex items-center gap-3.5">
+              {[
+                {
+                  href: company.social.facebook,
+                  label: "Facebook",
+                  icon: (
+                    <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1V12h3v3h-3v6.8c4.56-.93 8-4.96 8-9.8z"/>
+                    </svg>
+                  ),
+                },
+                {
+                  href: company.social.instagram,
+                  label: "Instagram",
+                  icon: (
+                    <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                      <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                      <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+                    </svg>
+                  ),
+                },
+                {
+                  href: company.social.linkedin,
+                  label: "LinkedIn",
+                  icon: (
+                    <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.779-1.75-1.75s.784-1.75 1.75-1.75 1.75.779 1.75 1.75-.784 1.75-1.75 1.75zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                    </svg>
+                  ),
+                },
+                {
+                  href: company.social.youtube,
+                  label: "YouTube",
+                  icon: (
+                    <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M23.498 6.163c-.272-1.022-1.074-1.826-2.099-2.099C19.558 3.5 12 3.5 12 3.5s-7.558 0-9.399.564c-1.025.273-1.827 1.077-2.099 2.099C0 8.002 0 12 0 12s0 3.998.564 5.837c.272 1.022 1.074 1.826 2.099 2.099C4.442 20.5 12 20.5 12 20.5s7.558 0 9.399-.564c1.025-.273 1.827-1.077 2.099-2.099C24 15.998 24 12 24 12s0-3.998-.502-5.837zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                    </svg>
+                  ),
+                },
+                {
+                  href: company.social.twitter,
+                  label: "Twitter",
+                  icon: (
+                    <svg className="w-4.5 h-4.5" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                    </svg>
+                  ),
+                },
+              ].map(({ href, label, icon }) => (
+                <a
+                  key={label}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={label}
+                  className="w-11 h-11 rounded-xl flex items-center justify-center bg-white/5 border border-white/10 text-[var(--red-primary)] hover:bg-[var(--red-primary)] hover:text-white hover:border-[var(--red-primary)] hover:scale-110 transition-all duration-300 shadow-sm"
+                >
+                  {icon}
+                </a>
+              ))}
+            </div>
+          </div>
+
+          {/* Column 2: Quick Links */}
+          <div className="lg:col-span-2">
+            <h4 className="text-white font-accent font-bold text-xs tracking-widest uppercase mb-5 flex items-center gap-3">
+              <span
+                className="w-6 h-0.5 rounded"
+                style={{ background: "var(--red-primary)" }}
+              />
+              Quick Links
+            </h4>
+            <ul className="flex flex-col gap-3">
+              {footerLinks.quickLinks.map((link) => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className="flex items-center gap-2 text-base text-gray-300 hover:text-white transition-colors duration-250 group"
+                  >
+                    <ArrowRight className="w-3.5 h-3.5 text-[var(--red-primary)] -translate-x-1 opacity-0 group-hover:translate-x-0 group-hover:opacity-100 transition-all duration-250" />
+                    <span className="group-hover:translate-x-1 transition-transform duration-250 font-accent">
+                      {link.label}
+                    </span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Column 3: Products */}
+          <div className="lg:col-span-2">
+            <h4 className="text-white font-accent font-bold text-xs tracking-widest uppercase mb-5 flex items-center gap-3">
+              <span
+                className="w-6 h-0.5 rounded"
+                style={{ background: "var(--red-primary)" }}
+              />
+              Products
+            </h4>
+            <ul className="flex flex-col gap-3">
+              {footerLinks.products.map((link) => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className="flex items-center gap-2 text-base text-gray-300 hover:text-white transition-colors duration-250 group"
+                  >
+                    <ArrowRight className="w-3.5 h-3.5 text-[var(--red-primary)] -translate-x-1 opacity-0 group-hover:translate-x-0 group-hover:opacity-100 transition-all duration-250" />
+                    <span className="group-hover:translate-x-1 transition-transform duration-250 font-accent">
+                      {link.label}
+                    </span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Column 4: Contact details */}
+          <div className="lg:col-span-2">
+            <h4 className="text-white font-accent font-bold text-xs tracking-widest uppercase mb-5 flex items-center gap-3">
+              <span
+                className="w-6 h-0.5 rounded"
+                style={{ background: "var(--red-primary)" }}
+              />
+              Contact Us
+            </h4>
+            <div className="flex flex-col gap-4">
+              
+              {/* Phone item */}
+              <a
+                href={`tel:${company.phone}`}
+                className="flex items-start gap-4 group"
+              >
+                <div
+                  className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0 mt-0.5 transition-all duration-300 group-hover:bg-[var(--red-primary)] group-hover:scale-105"
+                  style={{ background: "var(--red-muted)" }}
+                >
+                  <Phone className="w-4 h-4 text-[var(--red-primary)] group-hover:text-white transition-colors duration-300" />
+                </div>
+                <div>
+                  <p className="text-xs text-gray-500 tracking-wider uppercase mb-1 font-accent font-bold">Call Us</p>
+                  <p className="text-base text-gray-200 font-accent group-hover:text-white transition-colors duration-200">
+                    {company.phone}
+                  </p>
+                  <p className="text-base text-gray-200 font-accent group-hover:text-white transition-colors duration-200">
+                    {company.phone2}
+                  </p>
+                </div>
+              </a>
+
+              {/* Email item */}
+              <a
+                href={`mailto:${company.email}`}
+                className="flex items-start gap-4 group"
+              >
+                <div
+                  className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0 mt-0.5 transition-all duration-300 group-hover:bg-[var(--red-primary)] group-hover:scale-105"
+                  style={{ background: "var(--red-muted)" }}
+                >
+                  <Mail className="w-4 h-4 text-[var(--red-primary)] group-hover:text-white transition-colors duration-300" />
+                </div>
+                <div>
+                  <p className="text-xs text-gray-500 tracking-wider uppercase mb-1 font-accent font-bold">Email</p>
+                  <p className="text-base text-gray-200 font-accent group-hover:text-white transition-colors duration-200 break-all">
+                    {company.email}
+                  </p>
+                </div>
+              </a>
+
+              {/* Address item */}
+              <a
+                href={`https://maps.google.com/?q=${encodeURIComponent(company.address.full)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-start gap-4 group"
+              >
+                <div
+                  className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0 mt-0.5 transition-all duration-300 group-hover:bg-[var(--red-primary)] group-hover:scale-105"
+                  style={{ background: "var(--red-muted)" }}
+                >
+                  <MapPin className="w-4 h-4 text-[var(--red-primary)] group-hover:text-white transition-colors duration-300" />
+                </div>
+                <div>
+                  <p className="text-xs text-gray-500 tracking-wider uppercase mb-1 font-accent font-bold">Address</p>
+                  <p className="text-base text-gray-200 leading-relaxed font-accent font-light group-hover:text-white transition-colors duration-200">
+                    {company.address.line1}
+                    <br />
+                    {company.address.line2}
+                    <br />
+                    {company.address.city}, {company.address.state} {company.address.pincode}
+                  </p>
+                </div>
+              </a>
+
+            </div>
+          </div>
+
+          {/* Column 5: Location Map */}
+          <div className="lg:col-span-3 md:col-span-3">
+            <h4 className="text-white font-accent font-bold text-xs tracking-widest uppercase mb-5 flex items-center gap-3">
+              <span
+                className="w-6 h-0.5 rounded"
+                style={{ background: "var(--red-primary)" }}
+              />
+              Our Location
+            </h4>
+            <div className="rounded-xl overflow-hidden border border-white/10 h-[280px] relative group">
+              <iframe
+                src={company.mapEmbedUrl}
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Mod Men Location Map"
+                className="opacity-80 group-hover:opacity-100 transition-opacity duration-300"
+              />
+              <a
+                href={`https://maps.google.com/?q=${encodeURIComponent(company.address.full)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="absolute inset-0 bg-black/10 hover:bg-black/0 transition-colors duration-300"
+                aria-label="View on Google Maps"
+              />
+            </div>
+          </div>
+
+        </div>
+
+        {/* ── Centered Bottom Bar ─────────────────────────────────────── */}
+        <div
+          className="flex flex-col items-center justify-center gap-4 text-center"
+          style={{ paddingTop: "1.25rem" }}
+        >
+          <p className="text-gray-400 text-sm tracking-wide font-accent">
+            © {currentYear} {company.name}. All rights reserved.
+          </p>
+          <div className="flex flex-wrap items-center justify-center gap-8">
+            <Link
+              href="/privacy"
+              className="text-sm text-gray-400 hover:text-white transition-colors duration-250 font-accent tracking-wide"
+            >
+              Privacy Policy
+            </Link>
+            <Link
+              href="/terms"
+              className="text-sm text-gray-400 hover:text-white transition-colors duration-250 font-accent tracking-wide"
+            >
+              Terms of Use
+            </Link>
+            <Link
+              href="/sitemap.xml"
+              className="text-sm text-gray-400 hover:text-white transition-colors duration-250 font-accent tracking-wide"
+            >
+              Sitemap
+            </Link>
+          </div>
+        </div>
+        
+      </div>
+    </footer>
+  );
+}
