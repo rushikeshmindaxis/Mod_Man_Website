@@ -118,27 +118,39 @@ export default function PageHero({
 
       {/* ── Content ── */}
       <div
-        className="container w-full flex flex-col items-center justify-center"
+        className="container mx-auto px-4 sm:px-6 lg:px-8 w-full flex flex-col items-center justify-center"
         style={{ position: "relative", zIndex: 10 }}
       >
-        {/* Breadcrumb */}
-        <div className="mb-8 flex justify-center">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "BreadcrumbList",
+              itemListElement: [
+                {
+                  "@type": "ListItem",
+                  position: 1,
+                  name: "Home",
+                  item: "https://www.modmen.in",
+                },
+                {
+                  "@type": "ListItem",
+                  position: 2,
+                  name: breadcrumbLabel,
+                },
+              ],
+            }),
+          }}
+        />
+
+        {/* Breadcrumb - Left Aligned */}
+        <div className="w-full mb-8 hidden md:flex justify-start text-left">
           <Breadcrumb items={[{ label: breadcrumbLabel }]} dark />
         </div>
 
         {/* Text block */}
         <div className="max-w-4xl mx-auto flex flex-col items-center text-center">
-          {label && (
-            <AnimatedSection>
-              <div className="flex items-center justify-center gap-5 mb-4">
-                <span className="w-6 h-0.5" style={{ background: "var(--red-primary)" }} />
-                <span className="label-text" style={{ color: "var(--red-light)" }}>
-                  {label}
-                </span>
-                <span className="w-6 h-0.5" style={{ background: "var(--red-primary)" }} />
-              </div>
-            </AnimatedSection>
-          )}
 
           <AnimatedSection delay={0.1}>
             <h1 className="heading-xl text-white mb-5 leading-tight text-center">

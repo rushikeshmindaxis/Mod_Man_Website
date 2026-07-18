@@ -32,11 +32,12 @@ export default function BackToTop() {
       {isVisible && (
         <motion.button
           onClick={scrollToTop}
-          className="fixed bottom-6 right-6 z-50 w-12 h-12 rounded-full bg-[var(--black)]/80 backdrop-blur-md border border-white/10 hover:border-[var(--red-primary)]/40 flex items-center justify-center text-white/70 hover:text-[var(--red-primary)] shadow-lg hover:shadow-[var(--red-primary)]/10 transition-all duration-300 group no-print"
+          className="fixed bottom-6 right-6 z-50 w-12 h-12 rounded-full flex items-center justify-center text-white shadow-lg shadow-[var(--red-primary)]/30 hover:shadow-[var(--red-primary)]/50 transition-all duration-300 group no-print"
+          style={{ background: "var(--red-primary)" }}
           initial={{ opacity: 0, scale: 0.5, y: 20 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.5, y: 20 }}
-          whileHover={{ y: -4 }}
+          whileHover={{ y: -4, scale: 1.08 }}
           whileTap={{ scale: 0.95 }}
           title="Scroll to top"
         >

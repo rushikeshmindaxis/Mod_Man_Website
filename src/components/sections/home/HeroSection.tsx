@@ -68,7 +68,7 @@ export default function HeroSection() {
   return (
     <section
       ref={containerRef}
-      className="relative w-full min-h-[500px] sm:min-h-[600px] lg:min-h-0 lg:h-[42.37vw] flex items-center overflow-hidden bg-[var(--black)]"
+      className="relative w-full min-h-[500px] sm:min-h-[600px] lg:min-h-0 lg:h-[42.37vw] flex items-center overflow-hidden bg-[var(--black)] pb-[40px] md:pb-[60px] lg:pb-[80px] xl:pb-[100px] 2xl:pb-[120px]"
       style={{ isolation: "isolate" }}
     >
       {/* Background Image Slider with Parallax and Crossfade */}
@@ -125,18 +125,18 @@ export default function HeroSection() {
                 {/* Animated Headline */}
                 <div className="mb-4 min-h-[150px] sm:min-h-[160px] lg:min-h-[200px] w-full flex flex-col items-center justify-center">
                   <motion.h1
-                    className="heading-xl text-white text-center w-full mx-auto"
+                    className="heading-xl text-white text-center w-full mx-auto flex flex-col items-center justify-center gap-1"
                     initial={{ opacity: 0, y: 60 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
-                    style={{ textShadow: "0 2px 14px rgba(0,0,0,0.85)" }}
+                    style={{ textShadow: "0 4px 20px rgba(0, 0, 0, 0.95), 0 2px 8px rgba(0, 0, 0, 0.9)" }}
                   >
-                    Precision Craft.
-                    <br />
-                    <span style={{ color: "var(--red-primary)", textShadow: "0 0 15px rgba(255,255,255,0.5), 0 0 5px rgba(255,255,255,0.3)" }} className="w-full text-center block">
+                    <span className="w-full text-center block" style={{ textShadow: "0 4px 20px rgba(0, 0, 0, 0.95), 0 2px 8px rgba(0, 0, 0, 0.9)" }}>
+                      Precision Craft.
+                    </span>
+                    <span style={{ color: "var(--red-primary)", textShadow: "0 4px 20px rgba(0, 0, 0, 0.95), 0 2px 8px rgba(0, 0, 0, 0.9)" }} className="w-full text-center block">
                       {"Premium Design."}
                     </span>
-                    <br />
                     <motion.span
                       key={currentHeadline}
                       initial={{ opacity: 0, y: 30 }}
@@ -152,7 +152,7 @@ export default function HeroSection() {
                 </div>
 
                 {/* Slide Indicators (Centered below heading) */}
-                <div className="flex justify-center gap-3 mt-6 z-20">
+                <div className="flex justify-center gap-3 mt-12 sm:mt-16 lg:mt-20 z-20">
                   {images.map((_, index) => (
                     <button
                       key={index}
@@ -161,10 +161,10 @@ export default function HeroSection() {
                         setCurrentImageIndex(index);
                       }}
                       className={cn(
-                        "h-1.5 transition-all duration-300 rounded-full",
+                        "h-2 transition-all duration-300 rounded-full cursor-pointer",
                         index === currentImageIndex
-                          ? "w-8 bg-[var(--red-primary)]"
-                          : "w-2 bg-white/40 hover:bg-white/70"
+                          ? "w-10 bg-[var(--red-primary)]"
+                          : "w-2.5 bg-white/40 hover:bg-white/70"
                       )}
                       aria-label={`Go to slide ${index + 1}`}
                     />

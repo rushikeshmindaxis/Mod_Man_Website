@@ -22,6 +22,7 @@ export const navItems: NavItem[] = [
       { label: "Modular Office Workstation", href: "/products?category=modular-office-workstation" },
     ],
   },
+  { label: "Gallery", href: "/gallery" },
   { label: "Contact", href: "/contact" },
 ];
 
@@ -30,6 +31,7 @@ export const footerLinks = {
     { label: "Home", href: "/" },
     { label: "About Us", href: "/about" },
     { label: "Products", href: "/products" },
+    { label: "Gallery", href: "/gallery" },
     { label: "Contact", href: "/contact" },
   ],
   products: [

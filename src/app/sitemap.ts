@@ -1,4 +1,4 @@
-import { MetadataRoute } from "next";
+import type { MetadataRoute } from "next";
 import { company } from "@/data/company";
 import { productCategories } from "@/data/products";
 
@@ -7,10 +7,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
 
   const staticPages: MetadataRoute.Sitemap = [
-    { url: base, lastModified: now, changeFrequency: "weekly", priority: 1 },
+    { url: base, lastModified: now, changeFrequency: "weekly", priority: 1.0 },
     { url: `${base}/about`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
     { url: `${base}/products`, lastModified: now, changeFrequency: "weekly", priority: 0.9 },
+    { url: `${base}/gallery`, lastModified: now, changeFrequency: "weekly", priority: 0.8 },
     { url: `${base}/contact`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
+    { url: `${base}/privacy-policy`, lastModified: now, changeFrequency: "yearly", priority: 0.5 },
+    { url: `${base}/terms-and-conditions`, lastModified: now, changeFrequency: "yearly", priority: 0.5 },
   ];
 
   const categoryPages: MetadataRoute.Sitemap = productCategories.map((cat) => ({

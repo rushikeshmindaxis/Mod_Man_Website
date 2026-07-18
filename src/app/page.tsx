@@ -10,10 +10,16 @@ import { company } from "@/data/company";
 export const metadata: Metadata = {
   title: company.seo.defaultTitle,
   description: company.seo.defaultDescription,
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
     title: company.seo.defaultTitle,
     description: company.seo.defaultDescription,
     url: company.seo.siteUrl,
+    siteName: company.seo.siteName,
+    locale: "en_IN",
+    type: "website",
   },
 };
 

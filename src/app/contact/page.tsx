@@ -1,64 +1,74 @@
-import type { Metadata } from "next";
-import { Phone, Mail, MapPin, Clock, MessageCircle } from "lucide-react";
-import { company } from "@/data/company";
-import SectionHeader from "@/components/ui/SectionHeader";
-import AnimatedSection, { StaggerContainer, StaggerItem } from "@/components/ui/AnimatedSection";
-import PageHero from "@/components/sections/PageHero";
-import ContactFormClient from "@/components/sections/contact/ContactFormClient";
+// src/app/contact/page.tsx
 
+
+import type { Metadata } from "next";
+import { company } from "@/data/company";
+import PageHero from "@/components/sections/PageHero";
+import ContactSection from "@/components/sections/contact/ContactSection";
+
+// SEO metadata for the Contact page
 export const metadata: Metadata = {
-  title: "Contact Us",
-  description: `Get in touch with ${company.name}. Free design consultations, site visits, and custom quotes for modular furniture and interior solutions.`,
+  title: `Contact Us | Free Modular Furniture Consultation & Quotes`,
+  description: `Get in touch with ${company.name} in Pune. Free design consultations, site visits, and custom quotes for modular furniture and commercial interior solutions.`,
+  alternates: {
+    canonical: "/contact",
+  },
+  openGraph: {
+    title: `Contact Us | ${company.name}`,
+    description: `Connect with ${company.name} for custom modular furniture, kitchen designs, and office workspace consultations.`,
+    url: `${company.seo.siteUrl}/contact`,
+  },
 };
 
-const contactInfo = [
-  {
-    icon: Phone,
-    title: "Call Us",
-    lines: [company.phone, company.phone2],
-    href: `tel:${company.phone}`,
-    color: "var(--red-primary)",
-  },
-  {
-    icon: MessageCircle,
-    title: "WhatsApp",
-    lines: [company.phone, "Message us anytime"],
-    href: `https://wa.me/${company.whatsapp}`,
-    color: "#25D366",
-  },
-  {
-    icon: Mail,
-    title: "Email Us",
-    lines: [company.email],
-    href: `mailto:${company.email}`,
-    color: "var(--red-primary)",
-  },
-  {
-    icon: MapPin,
-    title: "Visit Us",
-    lines: [company.address.line1, company.address.line2, `${company.address.city}, ${company.address.state}`],
-    href: "#map",
-    color: "var(--red-primary)",
-  },
-  {
-    icon: Clock,
-    title: "Business Hours",
-    lines: ["Mon – Sat: 9:00 AM – 7:00 PM", "Sunday: By Appointment"],
-    color: "var(--red-primary)",
-  },
-];
-
+// FAQ structured data (JSON‑LD)
 const faqSchema = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
   mainEntity: [
     {
       "@type": "Question",
-      name: "How do I get a quote?",
+      name: "How do I get a modular furniture quote?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Fill out our contact form or call us directly. We offer free consultations.",
+        text: "Fill out our contact enquiry form or call us directly. We offer free design consultations and custom site estimates.",
       },
+    },
+    {
+      "@type": "Question",
+      name: "Do you offer site visits and consultations in Pune?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Yes, our team provides site visits, measurements, and 3D layout consultations across Pune and surrounding areas.",
+      },
+    },
+  ],
+};
+
+// LocalBusiness structured data (JSON‑LD)
+const localBusinessSchema = {
+  "@context": "https://schema.org",
+  "@type": "FurnitureStore",
+  "@id": `${company.seo.siteUrl}/#store`,
+  name: company.name,
+  image: `${company.seo.siteUrl}/contact-hero-bg.png`,
+  url: company.seo.siteUrl,
+  telephone: company.phone,
+  email: company.email,
+  priceRange: "₹₹",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: `${company.address.line1}, ${company.address.line2}`,
+    addressLocality: company.address.city,
+    addressRegion: company.address.state,
+    postalCode: company.address.pincode,
+    addressCountry: company.address.country,
+  },
+  openingHoursSpecification: [
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+      opens: "09:00",
+      closes: "19:00",
     },
   ],
 };
@@ -66,105 +76,27 @@ const faqSchema = {
 export default function ContactPage() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
+      {/* JSON‑LD scripts for SEO */}
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }} />
 
+      {/* Hero section */}
       <PageHero
         title="Let's Start Your"
         titleAccent="Project"
         subtitle="Our design team is ready to help you create your perfect space. Free consultation, no obligation."
         breadcrumbLabel="Contact"
-        label="Get In Touch"
+        backgroundImage="/contact-hero-bg.png"
       />
 
-      {/* Contact Info + Form */}
-      <section className="section-padding bg-[var(--gray-50)]">
-        <div className="container">
-          <div className="grid grid-cols-1 lg:grid-cols-5 gap-12">
-            {/* Info Panel */}
-            <div className="lg:col-span-2">
-              <SectionHeader
-                label="Contact Info"
-                title="We&apos;d Love to Hear"
-                titleAccent="From You"
-              />
-              <StaggerContainer className="mt-10 flex flex-col gap-5">
-                {contactInfo.map(({ icon: Icon, title, lines, href, color }) => (
-                  <StaggerItem key={title}>
-                    {href ? (
-                      <a
-                        href={href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-start gap-4 p-5 bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow duration-200 cursor-pointer"
-                      >
-                        <div
-                          className="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0"
-                          style={{ background: `${color}15` }}
-                        >
-                          <span style={{ color }}><Icon className="w-5 h-5" /></span>
-                        </div>
-                        <div>
-                          <p className="font-accent font-semibold text-[var(--black)] text-sm mb-1">
-                            {title}
-                          </p>
-                          {lines.map((line, i) => (
-                            <p key={i} className="text-sm text-gray-500">
-                              {line}
-                            </p>
-                          ))}
-                        </div>
-                      </a>
-                    ) : (
-                      <div className="flex items-start gap-4 p-5 bg-white rounded-2xl border border-gray-100 shadow-sm">
-                        <div
-                          className="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0"
-                          style={{ background: `${color}15` }}
-                        >
-                          <span style={{ color }}><Icon className="w-5 h-5" /></span>
-                        </div>
-                        <div>
-                          <p className="font-accent font-semibold text-[var(--black)] text-sm mb-1">
-                            {title}
-                          </p>
-                          {lines.map((line, i) => (
-                            <p key={i} className="text-sm text-gray-500">
-                              {line}
-                            </p>
-                          ))}
-                        </div>
-                      </div>
-                    )}
-                  </StaggerItem>
-                ))}
-              </StaggerContainer>
-            </div>
+      {/* Explicit spacer to ensure proper bottom spacing below Hero */}
+      <div className="w-full h-10 md:h-16 lg:h-[100px] bg-white" />
 
-            {/* Contact Form */}
-            <div className="lg:col-span-3">
-              <ContactFormClient />
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* Main contact form & information */}
+      <ContactSection />
 
-      {/* Google Map */}
-      <section id="map" className="h-96 relative">
-        <AnimatedSection className="h-full">
-          <iframe
-            src={company.mapEmbedUrl}
-            width="100%"
-            height="100%"
-            style={{ border: 0 }}
-            allowFullScreen
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
-            title="Mod Men Location"
-          />
-        </AnimatedSection>
-      </section>
+      {/* Explicit spacer to ensure proper bottom spacing above Footer */}
+      <div className="w-full h-10 md:h-16 lg:h-[100px] bg-white" />
     </>
   );
 }

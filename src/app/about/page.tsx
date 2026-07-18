@@ -1,16 +1,33 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Target, Eye, Heart, Award, Users, Globe, Briefcase, Calendar, TrendingUp, FileText, Shield } from "lucide-react";
+import { ArrowRight, Target, Eye, Heart, Award, Ruler, Palette, Clock, Shield, Users } from "lucide-react";
 import { company } from "@/data/company";
-import { timeline } from "@/data/index";
+import { usps } from "@/data/index";
 import SectionHeader from "@/components/ui/SectionHeader";
 import AnimatedSection, { StaggerContainer, StaggerItem } from "@/components/ui/AnimatedSection";
 import PageHero from "@/components/sections/PageHero";
 
+const uspIconMap: Record<string, React.ComponentType<{ className?: string }>> = {
+  Award,
+  Ruler,
+  Palette,
+  Clock,
+  Shield,
+  Users,
+};
+
 export const metadata: Metadata = {
-  title: "About Us",
-  description: `Learn about Mod Men — ${company.description}`,
+  title: "About Us | Premier Modular Furniture Manufacturer in Pune",
+  description: `Learn about ${company.name} — ${company.shortDescription} Over 14+ years of craftsmanship, state-of-the-art manufacturing, and interior excellence in Pune, Maharashtra.`,
+  alternates: {
+    canonical: "/about",
+  },
+  openGraph: {
+    title: `About Us | ${company.name}`,
+    description: `Discover the story, mission, and team behind ${company.name}.`,
+    url: `${company.seo.siteUrl}/about`,
+  },
 };
 
 const values = [
@@ -66,7 +83,6 @@ export default function AboutPage() {
         titleAccent={String(company.foundedYear)}
         subtitle={company.description}
         breadcrumbLabel="About Us"
-        label="About Us"
         backgroundImage="/about-hero-bg.jpg"
       />
 
@@ -244,7 +260,62 @@ export default function AboutPage() {
           </StaggerContainer>
         </div>
       </section>
+
+      {/* ── Why Choose Us ──────────────────────────────────────────────── */}
+      <section className="section-padding bg-white">
+        <div className="container">
+          <div className="flex flex-col items-center justify-center gap-6 mb-14 w-full text-center">
+            <SectionHeader
+              align="center"
+              label="Why Choose Us"
+              title="The Mod Men"
+              titleAccent="Difference"
+              subtitle="From precision manufacturing to dedicated after-sales care, here is what sets us apart from the rest."
+              className="mx-auto"
+            />
+          </div>
+
+          <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 items-start">
+            {usps.map((usp, index) => {
+              const Icon = uspIconMap[usp.icon];
+              return (
+                <StaggerItem key={usp.id} className="h-full">
+                  <div className="group relative bg-[var(--gray-50)] hover:bg-white rounded-3xl border border-gray-100 hover:border-[var(--red-primary)]/20 hover:shadow-xl hover:shadow-gray-100/80 transition-all duration-300 flex flex-col gap-6 cursor-default h-full"
+                    style={{ padding: "32px" }}
+                  >
+                    {/* Background number watermark — clipped inside its own container */}
+                    <div className="absolute inset-0 rounded-3xl overflow-hidden pointer-events-none select-none">
+                      <span className="absolute right-4 bottom-2 text-8xl font-black text-gray-100 group-hover:text-[var(--red-primary)]/5 transition-colors duration-300 leading-none">
+                        {String(index + 1).padStart(2, "0")}
+                      </span>
+                    </div>
+
+                    {/* Icon badge */}
+                    <div
+                      className="w-14 h-14 rounded-2xl flex items-center justify-center flex-shrink-0 transition-transform duration-300 group-hover:scale-105 relative z-10"
+                      style={{ background: "rgba(196, 30, 58, 0.10)" }}
+                    >
+                      {Icon && (
+                        <Icon className="w-6 h-6" style={{ color: "var(--red-primary)" }} />
+                      )}
+                    </div>
+
+                    {/* Content */}
+                    <div className="relative z-10 flex flex-col gap-3">
+                      <h3 className="text-lg font-accent font-bold text-[var(--black)] group-hover:text-[var(--red-primary)] transition-colors duration-300 leading-snug">
+                        {usp.title}
+                      </h3>
+                      <p className="text-gray-500 text-sm leading-7">
+                        {usp.description}
+                      </p>
+                    </div>
+                  </div>
+                </StaggerItem>
+              );
+            })}
+          </StaggerContainer>
+        </div>
+      </section>
     </>
   );
 }
-

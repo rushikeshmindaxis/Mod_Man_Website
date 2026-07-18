@@ -218,7 +218,7 @@ export default function Navbar() {
                   <AnimatePresence>
                     {item.children && megaMenuOpen && (
                       <motion.div
-                        className="absolute top-full left-0 mt-4 w-[300px] rounded-xl shadow-2xl z-50 border border-gray-100 bg-white overflow-hidden"
+                        className="absolute top-full left-0 mt-4 w-[300px] rounded-none shadow-2xl z-50 border border-gray-100 bg-white overflow-hidden"
                         style={{ padding: "12px" }}
                         initial={{ opacity: 0, y: 15, scale: 0.95 }}
                         animate={{ opacity: 1, y: 0, scale: 1 }}
@@ -231,7 +231,7 @@ export default function Navbar() {
                             <Link
                               key={child.href}
                               href={child.href}
-                              className="flex items-center gap-4 px-4 py-3.5 text-[15px] font-accent font-medium rounded-lg transition-all duration-200 group/item text-gray-700 hover:text-[var(--red-primary)] hover:bg-red-50"
+                              className="flex items-center gap-4 px-4 py-3.5 text-[15px] font-accent font-medium rounded-none transition-all duration-200 group/item text-gray-700 hover:text-[var(--red-primary)] hover:bg-red-50"
                             >
                               <Icon className="w-5 h-5 text-gray-400 group-hover/item:text-[var(--red-primary)] transition-colors duration-200" />
                               <span>{child.label}</span>
@@ -301,11 +301,11 @@ export default function Navbar() {
         {mobileOpen && (
           <motion.div
             data-lenis-prevent
-            className="fixed inset-0 z-30 bg-[var(--black)] flex flex-col pb-8 overflow-y-auto"
+            className="fixed inset-x-0 top-0 h-[50vh] z-30 bg-[var(--black)] flex flex-col pb-8 overflow-y-auto border-b border-white/10 shadow-2xl"
             style={{ paddingTop: "7.5rem" }}
-            initial={{ opacity: 0, x: "100%" }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: "100%" }}
+            initial={{ opacity: 0, y: "-100%" }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: "-100%" }}
             transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
           >
             {/* Red accent bar */}
@@ -328,9 +328,13 @@ export default function Navbar() {
                           ? "bg-[var(--red-primary)]/10 text-[var(--red-primary)]"
                           : "text-white/80 hover:text-white hover:bg-white/5"
                       )}
-                      onClick={() => {
-                        if (!item.children) setMobileOpen(false);
-                        else setActiveDropdown(activeDropdown === item.href ? null : item.href);
+                      onClick={(e) => {
+                        if (item.children) {
+                          e.preventDefault();
+                          setActiveDropdown(activeDropdown === item.href ? null : item.href);
+                        } else {
+                          setMobileOpen(false);
+                        }
                       }}
                     >
                       {item.label}
@@ -348,18 +352,24 @@ export default function Navbar() {
                           transition={{ duration: 0.3 }}
                           className="overflow-hidden"
                         >
-                          <div className="ml-4 mt-1 grid grid-cols-2 gap-1 pb-2">
+                          <div className="flex flex-col gap-1.5 mt-1.5 pl-3 border-l-2 border-[var(--red-primary)]/40 ml-4 py-1.5">
                             {item.children.map((child) => {
                               const Icon = child.label.includes("Furniture") ? Briefcase : Grid;
+                              const isChildActive = pathname === child.href;
                               return (
                                 <Link
                                   key={child.href}
                                   href={child.href}
                                   onClick={() => setMobileOpen(false)}
-                                  className="flex items-center gap-2.5 py-2 px-3 text-sm text-white/60 hover:text-[var(--red-primary)] rounded-lg hover:bg-white/5 transition-colors duration-200 font-accent group/item"
+                                  className={cn(
+                                    "flex items-center gap-3 py-2.5 px-3.5 text-sm font-accent font-medium rounded-lg transition-all duration-200 group/item",
+                                    isChildActive
+                                      ? "text-[var(--red-primary)] bg-[var(--red-primary)]/10"
+                                      : "text-white/75 hover:text-white hover:bg-white/10"
+                                  )}
                                 >
-                                  <Icon className="w-3.5 h-3.5 text-white/40 group-hover/item:text-[var(--red-primary)] transition-colors duration-200" />
-                                  <span>{child.label}</span>
+                                  <Icon className="w-4 h-4 text-white/50 group-hover/item:text-[var(--red-primary)] transition-colors duration-200 flex-shrink-0" />
+                                  <span className="whitespace-normal leading-normal">{child.label}</span>
                                 </Link>
                               );
                             })}

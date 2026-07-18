@@ -293,6 +293,31 @@ export default function Footer() {
                 className="absolute inset-0 bg-black/10 hover:bg-black/0 transition-colors duration-300"
                 aria-label="View on Google Maps"
               />
+              {/* Open in Maps badge */}
+              <a
+                href={`https://maps.google.com/?q=${encodeURIComponent(company.address.full)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="absolute top-3 left-3 z-20 flex items-center gap-1.5 bg-white text-gray-800 text-[11px] font-semibold px-3 py-1.5 rounded-lg shadow-md border border-gray-200 hover:bg-red-50 hover:text-[var(--red-primary)] hover:border-red-200 transition-all duration-200"
+              >
+                <svg className="w-3.5 h-3.5 text-[var(--red-primary)]" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z"/>
+                </svg>
+                Open in Maps
+              </a>
+              {/* Animated location pin - center */}
+              <div className="absolute inset-0 flex items-center justify-center z-10 pointer-events-none" style={{ paddingBottom: "40px" }}>
+                <div className="flex flex-col items-center">
+                  <div className="animate-bounce">
+                    <div className="w-10 h-10 rounded-full bg-[var(--red-primary)] flex items-center justify-center shadow-lg shadow-red-500/50 border-4 border-white">
+                      <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z"/>
+                      </svg>
+                    </div>
+                  </div>
+                  <div className="w-3 h-1.5 bg-black/20 rounded-full mt-0.5 blur-[1px]" />
+                </div>
+              </div>
             </div>
           </div>
 
@@ -300,24 +325,40 @@ export default function Footer() {
 
         {/* ── Centered Bottom Bar ─────────────────────────────────────── */}
         <div
-          className="flex flex-col items-center justify-center gap-4 text-center"
+          className="flex flex-col items-center justify-center gap-3 text-center"
           style={{ paddingTop: "1.25rem" }}
         >
+          {/* 1 - Copyright */}
           <p className="text-gray-400 text-sm tracking-wide font-accent">
             © {currentYear} {company.name}. All rights reserved.
           </p>
+
+          {/* 2 - Developer Credit */}
+          <p className="text-gray-500 text-xs tracking-wide font-accent">
+            Developed By{" "}
+            <a
+              href="https://mindaxisinnovation.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-400 hover:text-white transition-colors duration-200 font-semibold"
+            >
+              MindAxis Innovation Pvt Ltd.
+            </a>
+          </p>
+
+          {/* 3 - Nav Links */}
           <div className="flex flex-wrap items-center justify-center gap-8">
             <Link
-              href="/privacy"
+              href="/privacy-policy"
               className="text-sm text-gray-400 hover:text-white transition-colors duration-250 font-accent tracking-wide"
             >
               Privacy Policy
             </Link>
             <Link
-              href="/terms"
+              href="/terms-and-conditions"
               className="text-sm text-gray-400 hover:text-white transition-colors duration-250 font-accent tracking-wide"
             >
-              Terms of Use
+              Terms &amp; Conditions
             </Link>
             <Link
               href="/sitemap.xml"

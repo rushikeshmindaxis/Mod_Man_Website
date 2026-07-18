@@ -5,6 +5,7 @@ import Footer from "@/components/layout/Footer";
 import LoadingScreen from "@/components/ui/LoadingScreen";
 import ScrollProgress from "@/components/ui/ScrollProgress";
 import BackToTop from "@/components/ui/BackToTop";
+import FloatingButtons from "@/components/ui/FloatingButtons";
 import SmoothScrollProvider from "@/components/providers/SmoothScrollProvider";
 import { company } from "@/data/company";
 
@@ -13,13 +14,15 @@ export const metadata: Metadata = {
   title: {
     default: company.seo.defaultTitle,
     template: `%s | ${company.seo.siteName}`,
-    absolute: company.seo.defaultTitle,
   },
   description: company.seo.defaultDescription,
   keywords: company.seo.keywords,
   authors: [{ name: company.name }],
   creator: company.name,
   publisher: company.name,
+  alternates: {
+    canonical: "/",
+  },
   formatDetection: {
     email: false,
     address: false,
@@ -59,6 +62,7 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
+  category: "furniture",
 };
 
 export const viewport: Viewport = {
@@ -72,6 +76,7 @@ export const viewport: Viewport = {
 const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
+  "@id": `${company.seo.siteUrl}/#organization`,
   name: company.name,
   url: company.seo.siteUrl,
   logo: `${company.seo.siteUrl}/logo.png`,
@@ -81,7 +86,7 @@ const organizationSchema = {
       telephone: company.phone,
       contactType: "customer service",
       areaServed: "IN",
-      availableLanguage: "en",
+      availableLanguage: ["en", "hi", "mr"],
     },
   ],
   sameAs: [
@@ -91,6 +96,26 @@ const organizationSchema = {
     company.social.youtube,
     company.social.twitter,
   ],
+};
+
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": `${company.seo.siteUrl}/#website`,
+  url: company.seo.siteUrl,
+  name: company.seo.siteName,
+  description: company.seo.defaultDescription,
+  publisher: {
+    "@id": `${company.seo.siteUrl}/#organization`,
+  },
+  potentialAction: {
+    "@type": "SearchAction",
+    target: {
+      "@type": "EntryPoint",
+      urlTemplate: `${company.seo.siteUrl}/products?search={search_term_string}`,
+    },
+    "query-input": "required name=search_term_string",
+  },
 };
 
 export default function RootLayout({
@@ -108,6 +133,12 @@ export default function RootLayout({
             __html: JSON.stringify(organizationSchema),
           }}
         />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(websiteSchema),
+          }}
+        />
         <SmoothScrollProvider>
           <LoadingScreen />
           <ScrollProgress />
@@ -115,6 +146,7 @@ export default function RootLayout({
           <main className="min-h-screen">{children}</main>
           <Footer />
           <BackToTop />
+          <FloatingButtons />
         </SmoothScrollProvider>
       </body>
     </html>
