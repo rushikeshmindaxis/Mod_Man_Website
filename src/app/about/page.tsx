@@ -8,7 +8,7 @@ import SectionHeader from "@/components/ui/SectionHeader";
 import AnimatedSection, { StaggerContainer, StaggerItem } from "@/components/ui/AnimatedSection";
 import PageHero from "@/components/sections/PageHero";
 
-const uspIconMap: Record<string, React.ComponentType<{ className?: string }>> = {
+const uspIconMap: Record<string, React.ComponentType<React.SVGProps<SVGSVGElement>>> = {
   Award,
   Ruler,
   Palette,
@@ -296,7 +296,7 @@ export default function AboutPage() {
                       style={{ background: "rgba(196, 30, 58, 0.10)" }}
                     >
                       {Icon && (
-                        <Icon className="w-6 h-6" style={{ color: "var(--red-primary)" }} />
+                        <Icon className="w-6 h-6 text-[var(--red-primary)]" />
                       )}
                     </div>
 

@@ -13,7 +13,7 @@ const highlights = [
   "Turnkey delivery and installation service",
 ];
 
-const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
+const iconMap: Record<string, React.ComponentType<React.SVGProps<SVGSVGElement>>> = {
   Award,
   Ruler,
   Palette,

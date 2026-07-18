@@ -8,7 +8,7 @@ import {
   MessageSquare, PenTool, Hammer, CheckCircle, Truck, Wrench,
 } from "lucide-react";
 
-const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
+const iconMap: Record<string, React.ComponentType<React.SVGProps<SVGSVGElement>>> = {
   MessageSquare, PenTool, Hammer, CheckCircle, Truck, Wrench,
 };
 

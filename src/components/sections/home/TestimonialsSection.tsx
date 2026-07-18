@@ -9,7 +9,7 @@ import {
   Home, Building2, Hotel, ShoppingBag, Heart, GraduationCap, UtensilsCrossed, Factory
 } from "lucide-react";
 
-const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
+const iconMap: Record<string, React.ComponentType<React.SVGProps<SVGSVGElement>>> = {
   Home, Building2, Hotel, ShoppingBag, Heart, GraduationCap, UtensilsCrossed, Factory,
 };
 
