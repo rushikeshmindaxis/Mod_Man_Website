@@ -109,7 +109,7 @@ export default function Navbar() {
                 aria-label="Facebook"
               >
                 <svg className="w-4.5 h-4.5 transition-transform duration-200 hover:scale-110" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1V12h3v3h-3v6.8c4.56-.93 8-4.96 8-9.8z"/>
+                  <path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1V12h3v3h-3v6.8c4.56-.93 8-4.96 8-9.8z" />
                 </svg>
               </a>
               <a
@@ -120,9 +120,9 @@ export default function Navbar() {
                 aria-label="Instagram"
               >
                 <svg className="w-4.5 h-4.5 transition-transform duration-200 hover:scale-110" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
-                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
-                  <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                  <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
                 </svg>
               </a>
               <a
@@ -133,7 +133,7 @@ export default function Navbar() {
                 aria-label="LinkedIn"
               >
                 <svg className="w-4.5 h-4.5 transition-transform duration-200 hover:scale-110" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.779-1.75-1.75s.784-1.75 1.75-1.75 1.75.779 1.75 1.75-.784 1.75-1.75 1.75zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                  <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.779-1.75-1.75s.784-1.75 1.75-1.75 1.75.779 1.75 1.75-.784 1.75-1.75 1.75zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
                 </svg>
               </a>
               <a
@@ -144,7 +144,7 @@ export default function Navbar() {
                 aria-label="YouTube"
               >
                 <svg className="w-4.5 h-4.5 transition-transform duration-200 hover:scale-110" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M23.498 6.163c-.272-1.022-1.074-1.826-2.099-2.099C19.558 3.5 12 3.5 12 3.5s-7.558 0-9.399.564c-1.025.273-1.827 1.077-2.099 2.099C0 8.002 0 12 0 12s0 3.998.564 5.837c.272 1.022 1.074 1.826 2.099 2.099C4.442 20.5 12 20.5 12 20.5s7.558 0 9.399-.564c1.025-.273 1.827-1.077 2.099-2.099C24 15.998 24 12 24 12s0-3.998-.502-5.837zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                  <path d="M23.498 6.163c-.272-1.022-1.074-1.826-2.099-2.099C19.558 3.5 12 3.5 12 3.5s-7.558 0-9.399.564c-1.025.273-1.827 1.077-2.099 2.099C0 8.002 0 12 0 12s0 3.998.564 5.837c.272 1.022 1.074 1.826 2.099 2.099C4.442 20.5 12 20.5 12 20.5s7.558 0 9.399-.564c1.025-.273 1.827-1.077 2.099-2.099C24 15.998 24 12 24 12s0-3.998-.502-5.837zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
                 </svg>
               </a>
               <a
@@ -155,7 +155,7 @@ export default function Navbar() {
                 aria-label="Twitter"
               >
                 <svg className="w-4 h-4 transition-transform duration-200 hover:scale-110" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
                 </svg>
               </a>
             </div>
@@ -173,7 +173,7 @@ export default function Navbar() {
                   width={140}
                   height={56}
                   className="h-12 w-auto"
-                  style={logoVariant === "light" ? { filter: "brightness(0) invert(1)" } : {}}
+                  style={{ width: "auto", ...(logoVariant === "light" ? { filter: "brightness(0) invert(1)" } : {}) }}
                   priority
                 />
               </motion.div>
@@ -299,106 +299,135 @@ export default function Navbar() {
       {/* ── Mobile Menu ────────────────────────────────────────────────── */}
       <AnimatePresence>
         {mobileOpen && (
-          <motion.div
-            data-lenis-prevent
-            className="fixed inset-x-0 top-0 h-[50vh] z-30 bg-[var(--black)] flex flex-col pb-8 overflow-y-auto border-b border-white/10 shadow-2xl"
-            style={{ paddingTop: "7.5rem" }}
-            initial={{ opacity: 0, y: "-100%" }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: "-100%" }}
-            transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-          >
-            {/* Red accent bar */}
-            <div className="absolute top-0 left-0 right-0 h-1" style={{ background: "linear-gradient(90deg, var(--red-primary), var(--red-deep))" }} />
+          <>
+            {/* Backdrop */}
+            <motion.div
+              className="fixed inset-0 bg-black/60 backdrop-blur-sm z-40 lg:hidden"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              onClick={() => setMobileOpen(false)}
+            />
 
-            <div className="container flex flex-col gap-2 py-6">
-              {navItems.map((item, i) => (
-                <motion.div
-                  key={item.href}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: i * 0.07, duration: 0.4 }}
+            {/* Slidebar */}
+            <motion.div
+              data-lenis-prevent
+              className="fixed inset-y-0 right-0 w-[320px] max-w-[85vw] h-[100dvh] z-50 bg-[var(--black)] flex flex-col pb-8 overflow-y-auto shadow-2xl lg:hidden"
+              initial={{ x: "100%" }}
+              animate={{ x: 0 }}
+              exit={{ x: "100%" }}
+              transition={{ type: "spring", damping: 25, stiffness: 200 }}
+            >
+              {/* Red accent bar on the left edge */}
+              <div className="absolute top-0 left-0 bottom-0 w-1" style={{ background: "linear-gradient(180deg, var(--red-primary), var(--red-deep))" }} />
+
+              <div className="flex items-center justify-between pt-6 pb-6 pl-9 pr-6 border-b border-white/10 relative z-10">
+                <Image
+                  src="/logo.png"
+                  alt="Mod Men"
+                  width={120}
+                  height={48}
+                  className="h-9 w-auto filter brightness-0 invert"
+                />
+                <button
+                  onClick={() => setMobileOpen(false)}
+                  className="p-2 -mr-2 text-white/80 hover:text-white transition-colors bg-white/5 rounded-full"
+                  aria-label="Close menu"
                 >
-                  <div>
-                    <Link
-                      href={item.href}
-                      className={cn(
-                        "flex items-center justify-between py-3.5 px-4 rounded-xl text-base font-accent font-semibold transition-colors duration-200",
-                        pathname === item.href
-                          ? "bg-[var(--red-primary)]/10 text-[var(--red-primary)]"
-                          : "text-white/80 hover:text-white hover:bg-white/5"
-                      )}
-                      onClick={(e) => {
-                        if (item.children) {
-                          e.preventDefault();
-                          setActiveDropdown(activeDropdown === item.href ? null : item.href);
-                        } else {
-                          setMobileOpen(false);
-                        }
-                      }}
-                    >
-                      {item.label}
-                      {item.children && (
-                        <ChevronDown className={cn("w-4 h-4 transition-transform duration-200", activeDropdown === item.href ? "rotate-180" : "")} />
-                      )}
-                    </Link>
+                  <X className="w-5 h-5" />
+                </button>
+              </div>
 
-                    <AnimatePresence>
-                      {item.children && activeDropdown === item.href && (
-                        <motion.div
-                          initial={{ height: 0, opacity: 0 }}
-                          animate={{ height: "auto", opacity: 1 }}
-                          exit={{ height: 0, opacity: 0 }}
-                          transition={{ duration: 0.3 }}
-                          className="overflow-hidden"
-                        >
-                          <div className="flex flex-col gap-1.5 mt-1.5 pl-3 border-l-2 border-[var(--red-primary)]/40 ml-4 py-1.5">
-                            {item.children.map((child) => {
-                              const Icon = child.label.includes("Furniture") ? Briefcase : Grid;
-                              const isChildActive = pathname === child.href;
-                              return (
-                                <Link
-                                  key={child.href}
-                                  href={child.href}
-                                  onClick={() => setMobileOpen(false)}
-                                  className={cn(
-                                    "flex items-center gap-3 py-2.5 px-3.5 text-sm font-accent font-medium rounded-lg transition-all duration-200 group/item",
-                                    isChildActive
-                                      ? "text-[var(--red-primary)] bg-[var(--red-primary)]/10"
-                                      : "text-white/75 hover:text-white hover:bg-white/10"
-                                  )}
-                                >
-                                  <Icon className="w-4 h-4 text-white/50 group-hover/item:text-[var(--red-primary)] transition-colors duration-200 flex-shrink-0" />
-                                  <span className="whitespace-normal leading-normal">{child.label}</span>
-                                </Link>
-                              );
-                            })}
-                          </div>
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
+              <div className="container flex flex-col gap-2 pt-10 pb-6">
+                {navItems.map((item, i) => (
+                  <motion.div
+                    key={item.href}
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.1 + i * 0.05, duration: 0.4 }}
+                  >
+                    <div>
+                      <Link
+                        href={item.href}
+                        className={cn(
+                          "flex items-center justify-between py-3.5 px-4 rounded-xl text-base font-accent font-semibold transition-colors duration-200",
+                          pathname === item.href
+                            ? "bg-[var(--red-primary)]/10 text-[var(--red-primary)]"
+                            : "text-white/80 hover:text-white hover:bg-white/5"
+                        )}
+                        onClick={(e) => {
+                          if (item.children) {
+                            e.preventDefault();
+                            setActiveDropdown(activeDropdown === item.href ? null : item.href);
+                          } else {
+                            setMobileOpen(false);
+                          }
+                        }}
+                      >
+                        {item.label}
+                        {item.children && (
+                          <ChevronDown className={cn("w-4 h-4 transition-transform duration-200", activeDropdown === item.href ? "rotate-180" : "")} />
+                        )}
+                      </Link>
 
-            <div className="container mt-auto flex flex-col gap-3">
-              <a
-                href={`tel:${company.phone}`}
-                className="btn-ghost btn-ghost-white text-center justify-center"
-              >
-                <Phone className="w-4 h-4" />
-                {company.phone}
-              </a>
-              <Link
-                href="/contact"
-                className="btn-primary text-center justify-center"
-                onClick={() => setMobileOpen(false)}
-              >
-                Get a Free Quote
-              </Link>
-            </div>
-          </motion.div>
+                      <AnimatePresence>
+                        {item.children && activeDropdown === item.href && (
+                          <motion.div
+                            initial={{ height: 0, opacity: 0 }}
+                            animate={{ height: "auto", opacity: 1 }}
+                            exit={{ height: 0, opacity: 0 }}
+                            transition={{ duration: 0.3 }}
+                            className="overflow-hidden"
+                          >
+                            <div className="flex flex-col gap-1.5 mt-1.5 pl-3 border-l-2 border-[var(--red-primary)]/40 ml-4 py-1.5">
+                              {item.children.map((child) => {
+                                const Icon = child.label.includes("Furniture") ? Briefcase : Grid;
+                                const isChildActive = pathname === child.href;
+                                return (
+                                  <Link
+                                    key={child.href}
+                                    href={child.href}
+                                    onClick={() => setMobileOpen(false)}
+                                    className={cn(
+                                      "flex items-center gap-3 py-2.5 px-3.5 text-sm font-accent font-medium rounded-lg transition-all duration-200 group/item",
+                                      isChildActive
+                                        ? "text-[var(--red-primary)] bg-[var(--red-primary)]/10"
+                                        : "text-white/75 hover:text-white hover:bg-white/10"
+                                    )}
+                                  >
+                                    <Icon className="w-4 h-4 text-white/50 group-hover/item:text-[var(--red-primary)] transition-colors duration-200 flex-shrink-0" />
+                                    <span className="whitespace-normal leading-normal">{child.label}</span>
+                                  </Link>
+                                );
+                              })}
+                            </div>
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+
+              <div className="container mt-auto pt-6 flex flex-col gap-6">
+                <a
+                  href={`tel:${company.phone}`}
+                  className="btn-ghost btn-ghost-white text-center justify-center"
+                >
+                  <Phone className="w-4 h-4" />
+                  {company.phone}
+                </a>
+                <Link
+                  href="/contact"
+                  className="btn-primary text-center justify-center"
+                  onClick={() => setMobileOpen(false)}
+                >
+                  Get a Free Quote
+                </Link>
+              </div>
+            </motion.div>
+          </>
         )}
       </AnimatePresence>
     </>

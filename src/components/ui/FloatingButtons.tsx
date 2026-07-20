@@ -29,7 +29,7 @@ export default function FloatingButtons() {
           rel="noopener noreferrer"
           aria-label="Chat on WhatsApp"
           title="Chat on WhatsApp"
-          className="group w-14 h-14 rounded-full flex items-center justify-center shadow-lg shadow-green-500/20 hover:shadow-green-500/40 transition-all duration-300"
+          className="group w-12 h-12 rounded-full flex items-center justify-center shadow-lg shadow-green-500/20 hover:shadow-green-500/40 transition-all duration-300"
           style={{ background: "#25D366" }}
           initial={{ opacity: 0, scale: 0.5, y: 20 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -37,7 +37,7 @@ export default function FloatingButtons() {
           whileHover={{ scale: 1.12, y: -4 }}
           whileTap={{ scale: 0.95 }}
         >
-          <WhatsAppIcon className="w-7 h-7 text-white" />
+          <WhatsAppIcon className="w-5 h-5 text-white" />
           {/* Tooltip */}
           <span className="absolute right-16 bg-[var(--black)] text-white text-xs font-accent font-semibold px-3 py-1.5 rounded-lg whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none shadow-lg">
             Chat on WhatsApp
@@ -51,7 +51,7 @@ export default function FloatingButtons() {
           href={`tel:${company.phone}`}
           aria-label={`Call ${company.phone}`}
           title={`Call ${company.phone}`}
-          className="group w-14 h-14 rounded-full flex items-center justify-center shadow-lg shadow-[var(--red-primary)]/20 hover:shadow-[var(--red-primary)]/40 transition-all duration-300"
+          className="group w-12 h-12 rounded-full flex items-center justify-center shadow-lg shadow-[var(--red-primary)]/20 hover:shadow-[var(--red-primary)]/40 transition-all duration-300"
           style={{ background: "var(--red-primary)" }}
           initial={{ opacity: 0, scale: 0.5, y: 20 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -59,7 +59,7 @@ export default function FloatingButtons() {
           whileHover={{ scale: 1.12, y: -4 }}
           whileTap={{ scale: 0.95 }}
         >
-          <Phone className="w-6 h-6 text-white" />
+          <Phone className="w-5 h-5 text-white" />
           {/* Tooltip */}
           <span className="absolute right-16 bg-[var(--black)] text-white text-xs font-accent font-semibold px-3 py-1.5 rounded-lg whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none shadow-lg">
             {company.phone}

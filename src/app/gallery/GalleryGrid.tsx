@@ -38,8 +38,12 @@ export default function GalleryGrid({ images, startIndex }: GalleryGridProps) {
           return (
             <div
               key={file}
-              onClick={() => setSelectedImage(imageSrc)}
-              className="group relative bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 aspect-[4/3] border border-gray-100 cursor-pointer"
+              onClick={() => {
+                if (typeof window !== "undefined" && window.innerWidth >= 640) {
+                  setSelectedImage(imageSrc);
+                }
+              }}
+              className="group relative bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 aspect-[4/3] border border-gray-100 cursor-default sm:cursor-pointer"
             >
               <Image
                 src={imageSrc}
@@ -51,8 +55,8 @@ export default function GalleryGrid({ images, startIndex }: GalleryGridProps) {
                 blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8Xw8AAoMBgDTD2qgAAAAASUVORK5CYII="
               />
 
-              {/* Hover Overlay with "View Full Image" Button */}
-              <div className="absolute inset-0 bg-black/45 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center gap-3 p-4">
+              {/* Hover Overlay with "View Full Image" Button (Hidden on Mobile) */}
+              <div className="hidden sm:flex absolute inset-0 bg-black/45 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex-col items-center justify-center gap-3 p-4">
                 <div className="w-12 h-12 rounded-full bg-white text-[var(--red-primary)] flex items-center justify-center shadow-lg transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
                   <Eye className="w-6 h-6" />
                 </div>

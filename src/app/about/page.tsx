@@ -171,7 +171,7 @@ export default function AboutPage() {
                 const numbers = ["01", "02", "03"];
                 return (
                   <AnimatedSection key={title} delay={0.2 * index} direction="left">
-                    <div className="glass p-6 sm:p-8 rounded-3xl border border-white/10 hover:border-[var(--red-primary)]/40 hover:bg-white/[0.02] transition-all duration-300 flex flex-col sm:flex-row items-start gap-6 relative group overflow-hidden">
+                    <div className="glass p-6 sm:p-8 rounded-3xl border border-white/10 hover:border-[var(--red-primary)]/40 hover:bg-white/[0.02] transition-all duration-300 flex flex-col sm:flex-row items-center sm:items-start gap-6 relative group overflow-hidden">
                       {/* Stylized background number */}
                       <span className="absolute right-4 bottom-2 text-8xl font-black font-display text-white/[0.03] select-none pointer-events-none group-hover:text-white/[0.05] transition-colors duration-300">
                         {numbers[index]}
@@ -188,7 +188,7 @@ export default function AboutPage() {
                       </div>
 
                       {/* Content */}
-                      <div className="flex-1">
+                      <div className="flex-1 text-center sm:text-left">
                         <h3 className="text-xl font-accent font-bold text-white mb-2 tracking-wide group-hover:text-[var(--red-light)] transition-colors duration-300">
                           {title}
                         </h3>

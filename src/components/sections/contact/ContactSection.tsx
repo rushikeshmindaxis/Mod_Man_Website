@@ -56,7 +56,7 @@ export default function ContactSection() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch w-full">
           {/* Left Column: Direct Contacts (5/12 cols) */}
           <div className="lg:col-span-5 bg-slate-50 border border-gray-200/80 p-6 sm:p-8 rounded-3xl w-full flex flex-col h-full">
-            <div className="w-full flex flex-col items-center text-center mb-16 pb-4 border-b border-gray-200">
+            <div className="w-full flex flex-col items-center text-center mb-16 pb-6 pt-4 px-4 sm:px-6 border-b border-gray-200">
               <p className="text-[11px] font-bold uppercase tracking-widest font-mono text-[var(--red-primary)] mb-2">
                 Direct Channels
               </p>

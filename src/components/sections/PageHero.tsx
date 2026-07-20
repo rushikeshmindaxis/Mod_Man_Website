@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import Breadcrumb from "@/components/ui/Breadcrumb";
 import AnimatedSection from "@/components/ui/AnimatedSection";
 import { cn } from "@/lib/utils";
+import Script from "next/script";
 
 interface PageHeroProps {
   title: string;
@@ -121,7 +122,8 @@ export default function PageHero({
         className="container mx-auto px-4 sm:px-6 lg:px-8 w-full flex flex-col items-center justify-center"
         style={{ position: "relative", zIndex: 10 }}
       >
-        <script
+        <Script
+          id={`breadcrumb-jsonld-${breadcrumbLabel.replace(/\\s+/g, '-').toLowerCase()}`}
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({

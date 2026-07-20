@@ -129,10 +129,10 @@ export default function FeaturedProductsSlider() {
                       </div>
 
                       <Link
-                        href={`/products?category=${product.category}`}
+                        href={`/products/${product.slug}`}
                         className="btn-primary self-start"
                       >
-                        Enquire Now <ArrowRight className="w-4 h-4" />
+                        View Details <ArrowRight className="w-4 h-4" />
                       </Link>
                     </div>
                   </motion.div>

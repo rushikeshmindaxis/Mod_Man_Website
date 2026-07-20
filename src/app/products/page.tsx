@@ -28,14 +28,17 @@ const itemListSchema = {
   })),
 };
 
+import Script from "next/script";
+
 export default function ProductsPage() {
   return (
-    <>
-      <script
+    <main>
+      <Script
+        id="products-jsonld"
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }}
       />
       <ProductsPageClient />
-    </>
+    </main>
   );
 }

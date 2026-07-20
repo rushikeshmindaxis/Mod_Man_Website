@@ -61,7 +61,7 @@ export default function Footer() {
                 width={160}
                 height={64}
                 className="h-14 w-auto"
-                style={{ filter: "brightness(0) saturate(100%) invert(18%) sepia(88%) saturate(5451%) hue-rotate(346deg) brightness(85%) contrast(85%)" }}
+                style={{ width: "auto", filter: "brightness(0) saturate(100%) invert(18%) sepia(88%) saturate(5451%) hue-rotate(346deg) brightness(85%) contrast(85%)" }}
               />
             </Link>
             <p className="text-gray-300 text-base leading-relaxed max-w-sm font-accent font-light tracking-wide">
