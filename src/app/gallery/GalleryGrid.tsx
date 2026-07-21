@@ -3,11 +3,18 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { Eye, X } from "lucide-react";
+import { Eye, X, ArrowUpRight } from "lucide-react";
 
 interface GalleryGridProps {
   images: string[];
   startIndex: number;
+}
+
+// Clean up file names for display titles underneath cards
+function cleanName(fileName: string) {
+  const base = fileName.substring(0, fileName.lastIndexOf('.')) || fileName;
+  const spaced = base.replace(/[-_]/g, ' ');
+  return spaced.replace(/\b\w/g, (c) => c.toUpperCase());
 }
 
 export default function GalleryGrid({ images, startIndex }: GalleryGridProps) {
@@ -30,39 +37,53 @@ export default function GalleryGrid({ images, startIndex }: GalleryGridProps) {
     };
   }, [selectedImage]);
 
+  // Pseudo-random staggered aspect ratios to create the masonry look
+  const aspectRatios = [
+    "aspect-[3/4]",  // Tall
+    "aspect-[1/1]",  // Square
+    "aspect-[4/5]",  // Slightly Tall
+    "aspect-[2/3]",  // Very Tall
+    "aspect-[3/2]"   // Wide
+  ];
+
   return (
     <>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div className="columns-1 sm:columns-2 md:columns-3 lg:columns-4 gap-5">
         {images.map((file, index) => {
           const imageSrc = `/Product_Images/${encodeURIComponent(file)}`;
-          return (
-            <div
-              key={file}
-              onClick={() => {
-                if (typeof window !== "undefined" && window.innerWidth >= 640) {
-                  setSelectedImage(imageSrc);
-                }
-              }}
-              className="group relative bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 aspect-[4/3] border border-gray-100 cursor-default sm:cursor-pointer"
-            >
-              <Image
-                src={imageSrc}
-                alt={`Product showcase ${startIndex + index + 1}`}
-                fill
-                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
-                placeholder="blur"
-                blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8Xw8AAoMBgDTD2qgAAAAASUVORK5CYII="
-              />
+          // Pick a stable aspect ratio based on index
+          const aspect = aspectRatios[index % aspectRatios.length];
 
-              {/* Hover Overlay with "View Full Image" Button (Hidden on Mobile) */}
-              <div className="hidden sm:flex absolute inset-0 bg-black/45 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex-col items-center justify-center gap-3 p-4">
-                <div className="w-12 h-12 rounded-full bg-white text-[var(--red-primary)] flex items-center justify-center shadow-lg transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
-                  <Eye className="w-6 h-6" />
+          return (
+            <div key={file} className="break-inside-avoid mb-5 group block">
+              {/* Outer Card with Pinterest Style */}
+              <div
+                onClick={() => {
+                  if (typeof window !== "undefined" && window.innerWidth >= 640) {
+                    setSelectedImage(imageSrc);
+                  }
+                }}
+                className="relative bg-gray-50 rounded-[20px] overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 border border-gray-100/60 cursor-pointer"
+              >
+                {/* Aspect ratio block */}
+                <div className={`${aspect} w-full relative overflow-hidden`}>
+                  <Image
+                    src={imageSrc}
+                    alt={`Product showcase ${startIndex + index + 1}`}
+                    fill
+                    sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                    className="object-cover group-hover:scale-[1.03] transition-transform duration-500 ease-out"
+                    placeholder="blur"
+                    blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8Xw8AAoMBgDTD2qgAAAAASUVORK5CYII="
+                  />
                 </div>
-                <span className="text-[var(--red-primary)] font-semibold text-sm sm:text-base tracking-wide transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300 delay-75 drop-shadow-sm">
-                  View Full Image
-                </span>
+
+                {/* Hover Overlay */}
+                <div className="absolute inset-0 bg-black/25 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center z-10 pointer-events-none">
+                  <div className="w-11 h-11 rounded-full bg-white text-gray-800 flex items-center justify-center shadow-md transform scale-90 group-hover:scale-100 transition-transform duration-300">
+                    <Eye className="w-5 h-5 text-[var(--red-primary)]" />
+                  </div>
+                </div>
               </div>
             </div>
           );

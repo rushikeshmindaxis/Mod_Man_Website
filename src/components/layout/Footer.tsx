@@ -274,23 +274,20 @@ export default function Footer() {
               />
               Our Location
             </h4>
-            <div className="rounded-xl overflow-hidden border border-white/10 h-[280px] relative group">
+            <div className="rounded-xl overflow-hidden border border-white/10 h-[280px] relative group bg-gray-100/10">
               <iframe
                 src={company.mapEmbedUrl}
-                width="100%"
-                height="100%"
-                style={{ border: 0 }}
+                style={{ border: 0, width: "100%", height: "100%", position: "absolute", inset: 0 }}
                 allowFullScreen
-                loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
                 title="Mod Men Location Map"
-                className="opacity-80 group-hover:opacity-100 transition-opacity duration-300"
+                className="opacity-80 group-hover:opacity-100 transition-opacity duration-300 z-0"
               />
               <a
                 href={`https://maps.google.com/?q=${encodeURIComponent(company.address.full)}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="absolute inset-0 bg-black/10 hover:bg-black/0 transition-colors duration-300"
+                className="absolute inset-0 bg-black/10 hover:bg-black/0 transition-colors duration-300 z-10"
                 aria-label="View on Google Maps"
               />
               {/* Open in Maps badge */}

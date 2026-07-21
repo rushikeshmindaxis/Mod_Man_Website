@@ -9,10 +9,10 @@ export const company = {
     "Mod Men is a premier modular furniture and interior solutions company delivering world-class craftsmanship, innovative design, and premium quality to homes, offices, and commercial spaces across India.",
   shortDescription:
     "Premium modular furniture and interior solutions with world-class craftsmanship.",
-  foundedYear: 2010,
+  foundedYear: 2019,
   email: "info@modmen.in",
   phone: "+91 98765 43210",
-  phone2: "+91 98765 43211",
+  phone2: "+91 94221 62504",
   whatsapp: "919876543210",
   address: {
     line1: "Sr. No. 09, Gala No. 4",

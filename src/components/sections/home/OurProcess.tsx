@@ -85,7 +85,7 @@ export default function OurProcess() {
                     <h4 className="font-accent font-semibold text-white mb-2 group-hover:text-[var(--red-light)] transition-colors duration-300">
                       {step.title}
                     </h4>
-                    <p className="text-xs text-white/40 leading-relaxed">{step.description}</p>
+                    <p className="text-sm text-gray-300 leading-relaxed">{step.description}</p>
                   </div>
                 </AnimatedSection>
               );
@@ -124,7 +124,7 @@ export default function OurProcess() {
                     <h4 className="font-accent font-semibold text-white mb-2">
                       {step.title}
                     </h4>
-                    <p className="text-sm text-white/50 leading-relaxed">{step.description}</p>
+                    <p className="text-base text-gray-300 leading-relaxed">{step.description}</p>
                   </div>
                 </div>
               </AnimatedSection>

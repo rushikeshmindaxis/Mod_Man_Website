@@ -122,7 +122,7 @@ function ProductsPageContent() {
               })}
             </div>
             {activeCategory !== "all" && (
-              <div className="text-center mt-4">
+              <div className="text-center" style={{ marginTop: "32px" }}>
                 <button
                   type="button"
                   onClick={() => setActiveCategory("all")}
@@ -135,28 +135,30 @@ function ProductsPageContent() {
           </AnimatedSection>
 
           {/* Products List */}
-          <StaggerContainer
-            key={activeCategory}
-            className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 xl:gap-8"
-          >
-            {visibleProducts.length > 0 ? (
-              visibleProducts.map((product, index) => (
-                <ProductCardItem
-                  key={product.id}
-                  product={product}
-                  categoryName={getCategoryName(product.category)}
-                  index={index}
-                  companyPhone={company.phone}
-                />
-              ))
-            ) : (
-              <div className="col-span-full text-center py-20">
-                <p className="text-gray-400 font-accent">
-                  No products match your search or filter. Check back soon!
-                </p>
-              </div>
-            )}
-          </StaggerContainer>
+          <div style={{ marginTop: "48px" }}>
+            <StaggerContainer
+              key={activeCategory}
+              className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 xl:gap-8"
+            >
+              {visibleProducts.length > 0 ? (
+                visibleProducts.map((product, index) => (
+                  <ProductCardItem
+                    key={product.id}
+                    product={product}
+                    categoryName={getCategoryName(product.category)}
+                    index={index}
+                    companyPhone={company.phone}
+                  />
+                ))
+              ) : (
+                <div className="col-span-full text-center py-20">
+                  <p className="text-gray-400 font-accent">
+                    No products match your search or filter. Check back soon!
+                  </p>
+                </div>
+              )}
+            </StaggerContainer>
+          </div>
 
           {/* Spacer to guarantee gap below products */}
           <div className="h-12 md:h-20 w-full"></div>

@@ -5,6 +5,7 @@ export interface USP {
   icon: string; // Lucide icon name
   title: string;
   description: string;
+  image?: string;
 }
 
 export const usps: USP[] = [
@@ -14,6 +15,7 @@ export const usps: USP[] = [
     title: "Premium Quality",
     description:
       "We use only the finest materials — European-grade hardware, moisture-resistant boards, and premium laminates that stand the test of time.",
+    image: "/usp_premium_quality.png",
   },
   {
     id: "usp-002",
@@ -21,6 +23,7 @@ export const usps: USP[] = [
     title: "Precision Engineering",
     description:
       "Every piece is manufactured with millimetre precision using state-of-the-art CNC machinery and quality-controlled processes.",
+    image: "/usp_precision_engineering.png",
   },
   {
     id: "usp-003",
@@ -28,6 +31,7 @@ export const usps: USP[] = [
     title: "Custom Design",
     description:
       "Our in-house designers work exclusively on your project, creating spaces that are uniquely yours — no templates, no compromises.",
+    image: "/usp_custom_design.png",
   },
   {
     id: "usp-004",
@@ -35,6 +39,7 @@ export const usps: USP[] = [
     title: "On-Time Delivery",
     description:
       "We are committed to delivering projects on schedule. Our streamlined manufacturing and logistics ensure zero delays.",
+    image: "/usp_on_time_delivery.png",
   },
   {
     id: "usp-005",
@@ -42,6 +47,7 @@ export const usps: USP[] = [
     title: "5-Year Warranty",
     description:
       "Comprehensive 5-year warranty on manufacturing, backed by lifetime after-sales support and a dedicated service team.",
+    image: "/usp_5_year_warranty.png",
   },
   {
     id: "usp-006",
@@ -49,6 +55,7 @@ export const usps: USP[] = [
     title: "Expert Team",
     description:
       "Our team of experienced designers, engineers, and craftsmen brings decades of collective expertise to every project.",
+    image: "/usp_expert_team.png",
   },
 ];
 
@@ -170,6 +177,7 @@ export interface TimelineEvent {
   title: string;
   description: string;
   milestone?: boolean;
+  image?: string;
 }
 
 export const timeline: TimelineEvent[] = [
@@ -180,6 +188,7 @@ export const timeline: TimelineEvent[] = [
     description:
       "Mod Men was established with a vision to deliver premium modular furniture solutions to discerning clients in Punjab.",
     milestone: true,
+    image: "https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=600&q=80",
   },
   {
     id: "tl-002",
@@ -187,6 +196,7 @@ export const timeline: TimelineEvent[] = [
     title: "Manufacturing Expansion",
     description:
       "Expanded our manufacturing facility to 50,000 sq ft with state-of-the-art CNC machinery and European-grade processes.",
+    image: "https://images.unsplash.com/photo-1565814329452-e1efa11c5b89?w=600&q=80",
   },
   {
     id: "tl-003",
@@ -195,6 +205,7 @@ export const timeline: TimelineEvent[] = [
     description:
       "Launched our dedicated commercial interiors division, serving corporate offices, hotels, and retail spaces.",
     milestone: true,
+    image: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&q=80",
   },
   {
     id: "tl-004",
@@ -202,6 +213,7 @@ export const timeline: TimelineEvent[] = [
     title: "1,000 Projects Milestone",
     description:
       "Celebrated the completion of our 1,000th project — a testament to trust, quality, and consistent delivery.",
+    image: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=600&q=80",
   },
   {
     id: "tl-005",
@@ -210,6 +222,7 @@ export const timeline: TimelineEvent[] = [
     description:
       "Extended operations to serve clients across India, with successful project deliveries in Delhi, Mumbai, and Bangalore.",
     milestone: true,
+    image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=600&q=80",
   },
   {
     id: "tl-006",
@@ -217,6 +230,7 @@ export const timeline: TimelineEvent[] = [
     title: "Innovation Lab",
     description:
       "Launched our design innovation lab for developing next-generation modular solutions using sustainable materials.",
+    image: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=600&q=80",
   },
   {
     id: "tl-007",
@@ -225,6 +239,7 @@ export const timeline: TimelineEvent[] = [
     description:
       "Achieved our 2,500+ project milestone while maintaining our uncompromising standards of quality and craftsmanship.",
     milestone: true,
+    image: "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?w=600&q=80",
   },
 ];
 

@@ -129,8 +129,73 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
+      {/* ── Certifications ────────────────────────────────────────────── */}
+      <section className="section-padding bg-gray-50">
+        <div className="container">
+          <div className="flex flex-col items-center justify-center gap-6 mb-12 w-full text-center">
+            <SectionHeader
+              align="center"
+              label="Quality & Standards"
+              title="Our Certifications"
+              subtitle="Committed to maintaining the highest global standards in manufacturing and quality control."
+              className="mx-auto"
+            />
+          </div>
 
+          <AnimatedSection delay={0.2} className="max-w-6xl mx-auto mt-12 px-4 md:px-8">
+            <div className="bg-white p-5 sm:p-8 md:p-16 rounded-3xl shadow-sm border-2 border-gray-200 flex flex-col md:flex-row gap-10 lg:gap-16 items-center">
 
+              {/* Certificate Image - Left Side */}
+              <div className="w-full md:w-5/12 flex justify-center">
+                <div className="relative w-full max-w-[280px] sm:max-w-sm aspect-[1/1.4] bg-gray-100 rounded-xl overflow-hidden shadow-md border border-gray-200">
+                  <img
+                    src="/ISO/MOD%20MEN%209001_page-0001.jpg"
+                    alt="ISO 9001:2015 Certificate"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              </div>
+
+              {/* Certificate Details - Right Side */}
+              <div className="w-full md:w-7/12 space-y-5 md:space-y-6 flex flex-col items-center md:items-start text-center md:text-left">
+                <div className="inline-flex items-center justify-center md:justify-start gap-2 px-4 py-2 bg-[var(--red-primary)]/10 text-[var(--red-primary)] rounded-full text-xs sm:text-sm font-bold tracking-widest uppercase mb-2">
+                  <Award className="w-4 h-4" />
+                  <span>ISO 9001:2015 Certified</span>
+                </div>
+
+                <h3 className="text-2xl sm:text-3xl lg:text-4xl font-display font-bold text-gray-900 leading-tight">
+                  Quality Management System
+                </h3>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 w-full mt-2 sm:mt-4 text-center md:text-left">
+                  <div className="flex flex-col">
+                    <span className="block text-[10px] sm:text-xs font-accent text-[var(--red-primary)] uppercase tracking-wider mb-1 sm:mb-2">Certificate Number</span>
+                    <span className="font-semibold text-gray-900 text-sm sm:text-base">20150810122107R</span>
+                  </div>
+                  <div className="flex flex-col">
+                    <span className="block text-[10px] sm:text-xs font-accent text-[var(--red-primary)] uppercase tracking-wider mb-1 sm:mb-2">Scope of Activities</span>
+                    <span className="font-semibold text-gray-900 text-sm leading-relaxed block">Manufacture & Trading for Modular Office, Home Furniture & Chairs</span>
+                  </div>
+                  <div className="flex flex-col">
+                    <span className="block text-[10px] sm:text-xs font-accent text-[var(--red-primary)] uppercase tracking-wider mb-1 sm:mb-2">Date of Initial Registration</span>
+                    <span className="font-semibold text-gray-900 text-sm sm:text-base">25th April 2026</span>
+                  </div>
+                  <div className="flex flex-col">
+                    <span className="block text-[10px] sm:text-xs font-accent text-[var(--red-primary)] uppercase tracking-wider mb-1 sm:mb-2">Registered Address</span>
+                    <span className="font-semibold text-gray-900 text-sm leading-relaxed block">Pisoli, Pune, Maharashtra - 411048</span>
+                  </div>
+                </div>
+
+                <p className="text-gray-600 text-base sm:text-lg leading-relaxed pt-8 sm:pt-10 border-t border-gray-100 mt-8 sm:mt-14 w-full">
+                  MOD MEN has been assessed and certified by RBS Cert. as meeting the rigorous requirements of ISO 9001:2015.
+                  This certification stands as a testament to our unwavering commitment to quality in the manufacture and trading of modular office furniture, home furniture, and chairs.
+                </p>
+              </div>
+
+            </div>
+          </AnimatedSection>
+        </div>
+      </section>
       {/* ── Mission Vision Values ─────────────────────────────────────── */}
       <section className="section-padding bg-[var(--black)] text-white relative overflow-hidden">
         {/* Background glow effects */}
@@ -145,7 +210,7 @@ export default function AboutPage() {
 
         <div className="container relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-            
+
             {/* Left: Section Header & Philosophy */}
             <div className="lg:col-span-5 flex flex-col items-start text-left">
               <SectionHeader
@@ -157,8 +222,8 @@ export default function AboutPage() {
               />
               <AnimatedSection delay={0.3} className="mt-8">
                 <p className="text-white/60 text-lg leading-relaxed max-w-lg font-accent font-light">
-                  We are driven by a single-minded commitment to excellence. 
-                  Every modular unit we manufacture, every workspace we lay out, 
+                  We are driven by a single-minded commitment to excellence.
+                  Every modular unit we manufacture, every workspace we lay out,
                   and every client experience we curate is a reflection of our core purpose.
                 </p>
                 <div className="mt-8 w-16 h-1 rounded" style={{ background: "linear-gradient(90deg, var(--red-primary), var(--red-light))" }} />
@@ -221,7 +286,7 @@ export default function AboutPage() {
               <StaggerItem key={member.id} className="h-full">
                 {/* Tall full-image card with rounded corners, overlay gradient, and hover lift */}
                 <div className="relative h-[450px] rounded-3xl overflow-hidden group shadow-md hover:shadow-2xl transition-all duration-500 border border-gray-100 flex flex-col justify-end">
-                  
+
                   {/* Background Image - positioned top to avoid head crops */}
                   <Image
                     src={member.image}
@@ -230,13 +295,13 @@ export default function AboutPage() {
                     className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   />
-                  
+
                   {/* Premium dark gradient overlay limited to bottom half */}
                   <div className="absolute inset-x-0 bottom-0 h-[60%] bg-gradient-to-t from-black/90 via-black/30 to-transparent transition-all duration-500 z-10" />
 
                   {/* Info Overlay Panel */}
                   <div className="absolute bottom-6 left-6 right-6 w-[calc(100%-48px)] z-20 flex flex-col justify-end text-left">
-                    
+
                     {/* Role Label */}
                     <span className="font-accent font-bold text-xs uppercase tracking-widest text-[var(--red-light)] mb-1 break-words whitespace-normal">
                       {member.role}
@@ -280,34 +345,47 @@ export default function AboutPage() {
               const Icon = uspIconMap[usp.icon];
               return (
                 <StaggerItem key={usp.id} className="h-full">
-                  <div className="group relative bg-[var(--gray-50)] hover:bg-white rounded-3xl border border-gray-100 hover:border-[var(--red-primary)]/20 hover:shadow-xl hover:shadow-gray-100/80 transition-all duration-300 flex flex-col gap-6 cursor-default h-full"
-                    style={{ padding: "32px" }}
-                  >
-                    {/* Background number watermark — clipped inside its own container */}
-                    <div className="absolute inset-0 rounded-3xl overflow-hidden pointer-events-none select-none">
-                      <span className="absolute right-4 bottom-2 text-8xl font-black text-gray-100 group-hover:text-[var(--red-primary)]/5 transition-colors duration-300 leading-none">
-                        {String(index + 1).padStart(2, "0")}
-                      </span>
-                    </div>
+                  <div className="group relative bg-[var(--gray-50)] hover:bg-white rounded-3xl border border-gray-200 hover:border-[var(--red-deep)] hover:shadow-xl hover:shadow-gray-100/80 transition-all duration-300 flex flex-col cursor-default h-full overflow-hidden">
 
-                    {/* Icon badge */}
-                    <div
-                      className="w-14 h-14 rounded-2xl flex items-center justify-center flex-shrink-0 transition-transform duration-300 group-hover:scale-105 relative z-10"
-                      style={{ background: "rgba(196, 30, 58, 0.10)" }}
-                    >
-                      {Icon && (
-                        <Icon className="w-6 h-6 text-[var(--red-primary)]" />
-                      )}
-                    </div>
+                    {usp.image && (
+                      <div className="relative w-full h-48 bg-gray-200 overflow-hidden shrink-0">
+                        <Image
+                          src={usp.image}
+                          alt={usp.title}
+                          fill
+                          className="object-cover transition-transform duration-700 group-hover:scale-110"
+                        />
+                        <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-500" />
+                      </div>
+                    )}
 
-                    {/* Content */}
-                    <div className="relative z-10 flex flex-col gap-3">
-                      <h3 className="text-lg font-accent font-bold text-[var(--black)] group-hover:text-[var(--red-primary)] transition-colors duration-300 leading-snug">
-                        {usp.title}
-                      </h3>
-                      <p className="text-gray-500 text-sm leading-7">
-                        {usp.description}
-                      </p>
+                    <div className="flex flex-col items-center text-center gap-6 px-8 pb-8 pt-12 flex-1 relative">
+                      {/* Background number watermark — clipped inside its own container */}
+                      <div className="absolute inset-0 overflow-hidden pointer-events-none select-none">
+                        <span className="absolute right-4 bottom-2 text-8xl font-black text-gray-100 group-hover:text-[var(--red-primary)]/5 transition-colors duration-300 leading-none z-0">
+                          {String(index + 1).padStart(2, "0")}
+                        </span>
+                      </div>
+
+                      {/* Icon badge */}
+                      <div
+                        className="w-14 h-14 rounded-2xl flex items-center justify-center flex-shrink-0 transition-transform duration-300 group-hover:scale-105 relative z-10 shadow-sm"
+                        style={{ background: "rgba(196, 30, 58, 0.10)" }}
+                      >
+                        {Icon && (
+                          <Icon className="w-6 h-6 text-[var(--red-primary)]" />
+                        )}
+                      </div>
+
+                      {/* Content */}
+                      <div className="relative z-10 flex flex-col gap-3 flex-1">
+                        <h3 className="text-xl font-accent font-bold text-[var(--black)] group-hover:text-[var(--red-primary)] transition-colors duration-300 leading-snug">
+                          {usp.title}
+                        </h3>
+                        <p className="text-gray-500 text-sm leading-7">
+                          {usp.description}
+                        </p>
+                      </div>
                     </div>
                   </div>
                 </StaggerItem>

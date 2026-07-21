@@ -1,12 +1,11 @@
 "use client";
 
-import { useState } from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft, CheckCircle2, PhoneCall } from "lucide-react";
 import { Product } from "@/data/products";
 import AnimatedSection from "@/components/ui/AnimatedSection";
-import PageHero from "@/components/sections/PageHero";
 import { company } from "@/data/company";
 
 interface ProductDetailPageClientProps {
@@ -18,22 +17,30 @@ export default function ProductDetailPageClient({ product }: ProductDetailPageCl
     ? product.images
     : [product.image];
   const [activeImage, setActiveImage] = useState(allImages[0]);
+  const [isCallHovered, setIsCallHovered] = useState(false);
 
   const specKeys = product.specifications ? Object.keys(product.specifications) : [];
   const minOrderQty = product.specifications?.["Minimum Order Quantity"];
   const displaySpecs = specKeys.filter((key) => key !== "Minimum Order Quantity");
 
+  const [isMobile, setIsMobile] = React.useState(false);
+
+  React.useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
   return (
     <>
-      <PageHero
-        title={product.name}
-        titleAccent=""
-        subtitle={product.category.replace(/-/g, " ")}
-        breadcrumbLabel={product.name}
-        backgroundImage={product.image}
-      />
-
-      <section className="section-padding bg-white">
+      <section
+        className="bg-white"
+        style={{
+          paddingTop: isMobile ? "240px" : "280px",
+          paddingBottom: isMobile ? "100px" : "140px"
+        }}
+      >
         <div className="container">
           <div className="mb-8">
             <Link
@@ -64,11 +71,10 @@ export default function ProductDetailPageClient({ product }: ProductDetailPageCl
                   <button
                     key={idx}
                     onClick={() => setActiveImage(img)}
-                    className={`relative w-20 h-20 rounded-lg overflow-hidden border-2 flex-shrink-0 transition-all duration-200 ${
-                      activeImage === img
+                    className={`relative w-20 h-20 rounded-lg overflow-hidden border-2 flex-shrink-0 transition-all duration-200 ${activeImage === img
                         ? "border-[var(--red-primary)] shadow-md scale-105"
                         : "border-gray-200 hover:border-gray-400"
-                    }`}
+                      }`}
                     aria-label={`View image ${idx + 1}`}
                   >
                     <Image src={img} alt={`${product.name} ${idx + 1}`} fill sizes="80px" className="object-cover" />
@@ -78,63 +84,55 @@ export default function ProductDetailPageClient({ product }: ProductDetailPageCl
             </AnimatedSection>
 
             {/* Right Column: Product Details & Specs */}
-            <AnimatedSection delay={0.2} className="flex flex-col">
-              <h1 className="text-3xl md:text-4xl font-display font-bold text-gray-900 mb-3">
+            <AnimatedSection delay={0.2} className="flex flex-col items-center text-center w-full">
+              <h1 
+                className="text-3xl md:text-4xl font-display font-bold text-gray-900 text-center"
+                style={{ marginBottom: "40px" }}
+              >
                 {product.name}
               </h1>
 
 
               {minOrderQty && (
-                <div className="text-gray-600 mb-6">
+                <div className="text-gray-600 mb-6 text-center">
                   Minimum Order Quantity: <span className="font-bold text-gray-900">{minOrderQty}</span>
                 </div>
               )}
 
-              {/* Action Buttons */}
-              <div className="flex flex-wrap gap-4 mb-10">
-                <Link
-                  href={`/contact?product=${product.slug}`}
-                  className="btn-primary py-3.5 px-8 flex items-center justify-center gap-2 shadow-lg hover:shadow-xl text-base font-semibold rounded-xl"
-                >
-                  Get a Quote <ArrowLeft className="w-5 h-5 rotate-180" />
-                </Link>
-                <a
-                  href={`tel:${company.phone.replace(/\\s/g, "")}`}
-                  className="py-3.5 px-8 bg-white border-2 border-gray-300 hover:border-gray-400 text-gray-800 hover:text-[var(--red-primary)] text-base font-semibold flex items-center justify-center gap-2 rounded-xl shadow-xs transition-all"
-                >
-                  <PhoneCall className="w-5 h-5 text-[var(--red-primary)]" />
-                  Call Now
-                </a>
-              </div>
-
-              {/* Unique Architectural Specs Layout (Centered) */}
+              {/* Unique Description-List Specs Layout */}
               {displaySpecs.length > 0 && (
-                <div className="mb-10 w-full border-b border-gray-200 pb-10">
-                  <div className="grid grid-cols-2 lg:grid-cols-3 gap-y-8 gap-x-4 py-2">
+                <div className="w-full max-w-2xl mx-auto border-t border-b border-gray-100 py-6 mb-8">
+                  <dl className="divide-y divide-gray-100">
                     {displaySpecs.map((key) => (
-                      <div key={key} className="flex flex-col items-center group/spec">
-                        <span className="text-xs md:text-sm font-accent text-gray-500 uppercase tracking-widest mb-1.5 transition-colors group-hover/spec:text-[var(--red-primary)] text-center">
+                      <div key={key} className="flex justify-between py-6 text-left text-sm sm:text-base">
+                        <dt className="font-accent text-gray-500 font-medium uppercase tracking-wider text-[11px] sm:text-xs w-1/2 flex items-center">
                           {key}
-                        </span>
-                        <span className="text-base md:text-lg font-bold text-gray-900 text-center">
+                        </dt>
+                        <dd className="font-bold text-gray-900 w-1/2 text-right">
                           {product.specifications![key]}
-                        </span>
+                        </dd>
                       </div>
                     ))}
-                  </div>
+                  </dl>
                 </div>
               )}
 
               {/* Description */}
-              <div className="pt-8 border-t border-gray-200">
-                <h3 className="text-xl font-display font-bold text-gray-900 mb-4">
+              <div 
+                className="border-t border-gray-200 w-full flex flex-col items-center text-center mb-10"
+                style={{
+                  marginTop: "24px",
+                  paddingTop: "24px"
+                }}
+              >
+                <h3 className="text-xl font-display font-bold text-gray-900 mb-4 text-center">
                   Product Description
                 </h3>
-                <p className="text-gray-600 leading-relaxed">
+                <p className="text-gray-600 leading-relaxed max-w-2xl mx-auto text-center">
                   {product.detailedDescription || product.description}
                 </p>
                 {product.features && product.features.length > 0 && (
-                  <ul className="mt-6 space-y-3">
+                  <ul className="mt-6 space-y-3 inline-block text-left mx-auto">
                     {product.features.map((feature, idx) => (
                       <li key={idx} className="flex items-start">
                         <CheckCircle2 className="w-5 h-5 text-[var(--red-primary)] mr-3 flex-shrink-0 mt-0.5" />
@@ -143,6 +141,31 @@ export default function ProductDetailPageClient({ product }: ProductDetailPageCl
                     ))}
                   </ul>
                 )}
+              </div>
+
+              {/* Action Buttons (Shifted to the bottom) */}
+              <div 
+                className="flex flex-wrap justify-center gap-4 w-full"
+                style={{ marginTop: "40px" }}
+              >
+                <Link
+                  href={`/contact?product=${product.slug}`}
+                  className="btn-primary py-3.5 px-8 flex items-center justify-center gap-2 shadow-lg hover:shadow-xl text-base font-semibold rounded-xl"
+                >
+                  Get a Quote <ArrowLeft className="w-5 h-5 rotate-180" />
+                </Link>
+                <a
+                  href={`tel:${company.phone.replace(/\\s/g, "")}`}
+                  className="py-3.5 px-8 bg-white text-gray-800 hover:text-[var(--red-primary)] text-base font-semibold flex items-center justify-center gap-2 rounded-xl shadow-xs transition-all"
+                  onMouseEnter={() => setIsCallHovered(true)}
+                  onMouseLeave={() => setIsCallHovered(false)}
+                  style={{
+                    border: isCallHovered ? "3px solid var(--red-primary)" : "3px solid #d1d5db"
+                  }}
+                >
+                  <PhoneCall className="w-5 h-5 text-[var(--red-primary)]" />
+                  Call Now
+                </a>
               </div>
             </AnimatedSection>
           </div>

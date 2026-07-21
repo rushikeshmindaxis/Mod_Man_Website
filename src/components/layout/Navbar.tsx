@@ -313,7 +313,7 @@ export default function Navbar() {
             {/* Slidebar */}
             <motion.div
               data-lenis-prevent
-              className="fixed inset-y-0 right-0 w-[320px] max-w-[85vw] h-[100dvh] z-50 bg-[var(--black)] flex flex-col pb-8 overflow-y-auto shadow-2xl lg:hidden"
+              className="fixed inset-y-0 right-0 w-[320px] max-w-[85vw] h-[100dvh] z-50 bg-[var(--black)] flex flex-col shadow-2xl lg:hidden"
               initial={{ x: "100%" }}
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
@@ -322,7 +322,7 @@ export default function Navbar() {
               {/* Red accent bar on the left edge */}
               <div className="absolute top-0 left-0 bottom-0 w-1" style={{ background: "linear-gradient(180deg, var(--red-primary), var(--red-deep))" }} />
 
-              <div className="flex items-center justify-between pt-6 pb-6 pl-9 pr-6 border-b border-white/10 relative z-10">
+              <div className="flex items-center justify-between pt-6 pb-6 pl-9 pr-6 border-b border-white/10 relative z-10 shrink-0">
                 <Image
                   src="/logo.png"
                   alt="Mod Men"
@@ -339,7 +339,7 @@ export default function Navbar() {
                 </button>
               </div>
 
-              <div className="container flex flex-col gap-2 pt-10 pb-6">
+              <div className="container flex flex-col gap-2 pt-20 pb-6 flex-1 overflow-y-auto">
                 {navItems.map((item, i) => (
                   <motion.div
                     key={item.href}
@@ -351,7 +351,7 @@ export default function Navbar() {
                       <Link
                         href={item.href}
                         className={cn(
-                          "flex items-center justify-between py-3.5 px-4 rounded-xl text-base font-accent font-semibold transition-colors duration-200",
+                          "flex items-center justify-center gap-2 py-3.5 px-4 rounded-xl text-base font-accent font-semibold transition-colors duration-200 relative",
                           pathname === item.href
                             ? "bg-[var(--red-primary)]/10 text-[var(--red-primary)]"
                             : "text-white/80 hover:text-white hover:bg-white/5"
@@ -380,7 +380,7 @@ export default function Navbar() {
                             transition={{ duration: 0.3 }}
                             className="overflow-hidden"
                           >
-                            <div className="flex flex-col gap-1.5 mt-1.5 pl-3 border-l-2 border-[var(--red-primary)]/40 ml-4 py-1.5">
+                            <div className="flex flex-col gap-2 mt-4 pt-2">
                               {item.children.map((child) => {
                                 const Icon = child.label.includes("Furniture") ? Briefcase : Grid;
                                 const isChildActive = pathname === child.href;
@@ -390,7 +390,7 @@ export default function Navbar() {
                                     href={child.href}
                                     onClick={() => setMobileOpen(false)}
                                     className={cn(
-                                      "flex items-center gap-3 py-2.5 px-3.5 text-sm font-accent font-medium rounded-lg transition-all duration-200 group/item",
+                                      "flex items-center justify-center gap-3 py-2.5 px-3.5 text-sm font-accent font-medium rounded-lg transition-all duration-200 group/item",
                                       isChildActive
                                         ? "text-[var(--red-primary)] bg-[var(--red-primary)]/10"
                                         : "text-white/75 hover:text-white hover:bg-white/10"
@@ -410,7 +410,7 @@ export default function Navbar() {
                 ))}
               </div>
 
-              <div className="container mt-auto pt-6 flex flex-col gap-6">
+              <div className="container shrink-0 mt-auto pt-6 pb-14 flex flex-col gap-5">
                 <a
                   href={`tel:${company.phone}`}
                   className="btn-ghost btn-ghost-white text-center justify-center"

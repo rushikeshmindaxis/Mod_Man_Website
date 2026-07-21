@@ -55,7 +55,7 @@ export default function ContactSection() {
         
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch w-full">
           {/* Left Column: Direct Contacts (5/12 cols) */}
-          <div className="lg:col-span-5 bg-slate-50 border border-gray-200/80 p-6 sm:p-8 rounded-3xl w-full flex flex-col h-full">
+          <div className="lg:col-span-5 bg-slate-50 border border-gray-200/80 p-6 sm:p-8 pt-10 sm:pt-14 rounded-3xl w-full flex flex-col h-full">
             <div className="w-full flex flex-col items-center text-center mb-16 pb-6 pt-4 px-4 sm:px-6 border-b border-gray-200">
               <p className="text-[11px] font-bold uppercase tracking-widest font-mono text-[var(--red-primary)] mb-2">
                 Direct Channels
@@ -80,9 +80,16 @@ export default function ContactSection() {
                 <p className="text-[10px] font-bold uppercase tracking-wider font-mono text-gray-400 mb-1">
                   Call Sales & Support
                 </p>
-                <a href={`tel:${company.phone.replace(/[^0-9+]/g, '')}`} className="text-sm sm:text-base font-bold text-gray-800 hover:text-[var(--red-primary)] transition-colors break-words block">
-                  {company.phone}
-                </a>
+                <div className="flex flex-col items-center gap-1">
+                  <a href={`tel:${company.phone.replace(/[^0-9+]/g, '')}`} className="text-sm sm:text-base font-bold text-gray-800 hover:text-[var(--red-primary)] transition-colors break-words block">
+                    {company.phone}
+                  </a>
+                  {company.phone2 && (
+                    <a href={`tel:${company.phone2.replace(/[^0-9+]/g, '')}`} className="text-sm sm:text-base font-bold text-gray-800 hover:text-[var(--red-primary)] transition-colors break-words block">
+                      {company.phone2}
+                    </a>
+                  )}
+                </div>
               </div>
             </div>
 

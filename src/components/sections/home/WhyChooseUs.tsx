@@ -35,8 +35,8 @@ export default function WhyChooseUs() {
           className="!gap-6 lg:!gap-8"
         />
 
-        <AnimatedSection delay={0.3}>
-          <ul className="mt-10 lg:mt-12 flex flex-col gap-4">
+        <AnimatedSection delay={0.3} className="mt-8 lg:mt-10">
+          <ul className="flex flex-col gap-4">
             {highlights.map((h) => (
               <li key={h} className="flex items-start gap-3">
                 <span style={{ color: "var(--red-primary)" }}>
@@ -48,8 +48,8 @@ export default function WhyChooseUs() {
           </ul>
         </AnimatedSection>
 
-        <AnimatedSection delay={0.4}>
-          <div className="mt-10 lg:mt-12 flex gap-4">
+        <AnimatedSection delay={0.4} className="mt-8 lg:mt-10">
+          <div className="flex gap-6">
             <Link href="/about" className="btn-primary">
               About Us <ArrowRight className="w-4 h-4" />
             </Link>
