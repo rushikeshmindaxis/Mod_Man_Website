@@ -24,7 +24,7 @@ export const company = {
     full: "Sr. No. 09, Gala No. 4, Behind Pravin Mehandi, Dagade Vajan Katta, Pisoli, Pune - 411048, Maharashtra, India",
   },
   mapEmbedUrl:
-    "https://maps.google.com/maps?q=18.44833755493164,73.90267944335938&t=&z=17&ie=UTF8&iwloc=&output=embed",
+    "https://maps.google.com/maps?q=18°26'54.0%22N%2073°54'09.7%22E&t=&z=17&ie=UTF8&iwloc=&output=embed",
   social: {
     facebook: "https://facebook.com/modmen",
     instagram: "https://instagram.com/modmen",

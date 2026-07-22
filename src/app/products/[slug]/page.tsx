@@ -26,15 +26,19 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     };
   }
 
+  const categoryName = product.category === "office-furniture" ? "Office Furniture" : "Modular Office Workstation";
+  const seoTitle = `${product.name} Manufacturer in Pune, India | ${company.name}`;
+  const seoDescription = `Get premium quality ${product.name} from Mod Men, Pune's leading ${categoryName} manufacturer. Custom modular design options, best prices, and expert installation.`;
+
   return {
-    title: `${product.name} | ${company.name}`,
-    description: product.shortDescription || product.description,
+    title: seoTitle,
+    description: seoDescription,
     alternates: {
       canonical: `/products/${product.slug}`,
     },
     openGraph: {
-      title: product.name,
-      description: product.shortDescription || product.description,
+      title: seoTitle,
+      description: seoDescription,
       url: `${company.seo.siteUrl}/products/${product.slug}`,
       images: [
         {

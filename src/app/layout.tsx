@@ -125,6 +125,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="dark scroll-smooth">
+      <head>
+        <meta name="revisit-after" content="7 days" />
+      </head>
       <body className="bg-[var(--black)] antialiased selection:bg-[var(--red-primary)] selection:text-white">
         {/* Schema markup */}
         <script
