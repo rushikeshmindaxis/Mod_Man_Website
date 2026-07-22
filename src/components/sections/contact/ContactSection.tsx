@@ -125,7 +125,7 @@ export default function ContactSection() {
                 className="opacity-90 group-hover:opacity-100 transition-opacity duration-300"
               />
               <a
-                href={`https://maps.google.com/?q=${encodeURIComponent(company.address.full)}`}
+                href="https://www.google.com/maps/search/?api=1&query=18.448333,73.902694"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="absolute inset-0 bg-black/5 hover:bg-black/0 transition-colors duration-300"
@@ -133,7 +133,7 @@ export default function ContactSection() {
               />
               {/* Open in Maps badge - top left */}
               <a
-                href={`https://maps.google.com/?q=${encodeURIComponent(company.address.full)}`}
+                href="https://www.google.com/maps/search/?api=1&query=18.448333,73.902694"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="absolute top-3 left-3 z-20 flex items-center gap-1.5 bg-white text-gray-800 text-[11px] font-semibold px-3 py-1.5 rounded-lg shadow-md border border-gray-200 hover:bg-red-50 hover:text-[var(--red-primary)] hover:border-red-200 transition-all duration-200"

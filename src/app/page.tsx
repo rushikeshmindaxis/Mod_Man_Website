@@ -23,7 +23,7 @@ export const metadata: Metadata = {
 };
 
 export default function HomePage() {
-  // Trigger cache refresh - footer developer signature text color updated to off-white
+  // Trigger cache refresh - maps coordinate url query update applied
   return (
     <>
       <HeroSection />

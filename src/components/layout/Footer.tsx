@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import {
   Phone,
   Mail,
@@ -13,6 +14,7 @@ import { footerLinks } from "@/data/navigation";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
+  const pathname = usePathname();
 
   return (
     <footer className="bg-[var(--black)] text-white relative overflow-hidden">
@@ -54,7 +56,16 @@ export default function Footer() {
           
           {/* Column 1: Brand & Philosophy */}
           <div className="lg:col-span-3 flex flex-col items-start gap-6">
-            <Link href="/" className="block">
+            <Link
+              href="/"
+              className="block"
+              onClick={(e) => {
+                if (pathname === "/") {
+                  e.preventDefault();
+                  window.location.reload();
+                }
+              }}
+            >
               <Image
                 src="/logo.png"
                 alt="Mod Men"
@@ -142,11 +153,17 @@ export default function Footer() {
               />
               Quick Links
             </h4>
-            <ul className="flex flex-col gap-3">
+             <ul className="flex flex-col gap-3">
               {footerLinks.quickLinks.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
+                    onClick={(e) => {
+                      if (pathname === link.href) {
+                        e.preventDefault();
+                        window.location.reload();
+                      }
+                    }}
                     className="flex items-center gap-2 text-base text-gray-300 hover:text-white transition-colors duration-250 group"
                   >
                     <ArrowRight className="w-3.5 h-3.5 text-[var(--red-primary)] -translate-x-1 opacity-0 group-hover:translate-x-0 group-hover:opacity-100 transition-all duration-250" />
@@ -173,6 +190,12 @@ export default function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
+                    onClick={(e) => {
+                      if (pathname === link.href) {
+                        e.preventDefault();
+                        window.location.reload();
+                      }
+                    }}
                     className="flex items-center gap-2 text-base text-gray-300 hover:text-white transition-colors duration-250 group"
                   >
                     <ArrowRight className="w-3.5 h-3.5 text-[var(--red-primary)] -translate-x-1 opacity-0 group-hover:translate-x-0 group-hover:opacity-100 transition-all duration-250" />
@@ -284,7 +307,7 @@ export default function Footer() {
                 className="opacity-80 group-hover:opacity-100 transition-opacity duration-300 z-0"
               />
               <a
-                href={`https://maps.google.com/?q=${encodeURIComponent(company.address.full)}`}
+                href="https://www.google.com/maps/search/?api=1&query=18.448333,73.902694"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="absolute inset-0 bg-black/10 hover:bg-black/0 transition-colors duration-300 z-10"
@@ -292,7 +315,7 @@ export default function Footer() {
               />
               {/* Open in Maps badge */}
               <a
-                href={`https://maps.google.com/?q=${encodeURIComponent(company.address.full)}`}
+                href="https://www.google.com/maps/search/?api=1&query=18.448333,73.902694"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="absolute top-3 left-3 z-20 flex items-center gap-1.5 bg-white text-gray-800 text-[11px] font-semibold px-3 py-1.5 rounded-lg shadow-md border border-gray-200 hover:bg-red-50 hover:text-[var(--red-primary)] hover:border-red-200 transition-all duration-200"

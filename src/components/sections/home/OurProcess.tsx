@@ -55,7 +55,7 @@ export default function OurProcess() {
                   <div className="flex flex-col items-center text-center group">
                     {/* Step number + Icon */}
                     <motion.div
-                      className="relative mb-6"
+                      className="relative mb-6 w-16 h-16 mx-auto !overflow-visible"
                       whileHover={{ scale: 1.1 }}
                       transition={{ duration: 0.3 }}
                     >
@@ -73,7 +73,7 @@ export default function OurProcess() {
                       </div>
                       {/* Step number */}
                       <div
-                        className="absolute -top-1.5 -right-1.5 w-7 h-7 rounded-full flex items-center justify-center text-white text-xs font-extrabold font-accent border border-black/50 shadow-sm"
+                        className="absolute -top-1.5 -right-1.5 w-7 h-7 rounded-full flex items-center justify-center text-white text-xs font-extrabold font-sans border border-black/50 shadow-sm p-0 m-0 leading-none z-20"
                         style={{
                           background: "linear-gradient(135deg, var(--red-primary), var(--red-deep))",
                         }}
@@ -113,7 +113,7 @@ export default function OurProcess() {
                       </span>
                     </div>
                     <div
-                      className="absolute -top-1.5 -right-1.5 w-7 h-7 rounded-full flex items-center justify-center text-white text-xs font-extrabold font-accent border border-black/50 shadow-sm"
+                      className="absolute -top-1.5 -right-1.5 w-7 h-7 rounded-full flex items-center justify-center text-white text-xs font-extrabold font-sans border border-black/50 shadow-sm p-0 m-0 leading-none z-20"
                       style={{ background: "var(--red-primary)" }}
                     >
                       {step.step}
