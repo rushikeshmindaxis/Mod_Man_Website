@@ -26,7 +26,7 @@ export default function WhyChooseUs() {
   return (
     <section className="w-full min-h-screen lg:h-screen bg-white relative overflow-hidden flex flex-col lg:flex-row items-stretch">
       {/* Left: Text Content */}
-      <div className="w-full lg:w-1/2 flex flex-col justify-center why-choose-us-left pr-6 sm:pr-12 lg:pr-16 xl:pr-24 py-16 lg:py-12 z-10">
+      <div className="w-full lg:w-1/2 flex flex-col justify-center gap-8 lg:gap-10 why-choose-us-left pr-6 sm:pr-12 lg:pr-16 xl:pr-24 py-16 lg:py-12 z-10">
         <SectionHeader
           label="Why Choose Us"
           title="The Mod Men"
@@ -35,7 +35,7 @@ export default function WhyChooseUs() {
           className="!gap-6 lg:!gap-8"
         />
 
-        <AnimatedSection delay={0.3} className="mt-8 lg:mt-10">
+        <AnimatedSection delay={0.3}>
           <ul className="flex flex-col gap-4">
             {highlights.map((h) => (
               <li key={h} className="flex items-start gap-3">
@@ -48,8 +48,8 @@ export default function WhyChooseUs() {
           </ul>
         </AnimatedSection>
 
-        <AnimatedSection delay={0.4} className="mt-8 lg:mt-10">
-          <div className="flex gap-6">
+        <AnimatedSection delay={0.4}>
+          <div className="flex flex-wrap gap-4 sm:gap-6">
             <Link href="/about" className="btn-primary">
               About Us <ArrowRight className="w-4 h-4" />
             </Link>
@@ -76,15 +76,6 @@ export default function WhyChooseUs() {
           <div className="absolute inset-0 bg-black/10 mix-blend-multiply" />
         </div>
 
-        {/* Decorative Red Accent shapes in the corner */}
-        <div
-          className="absolute top-6 right-6 w-24 h-24 rounded-2xl opacity-20 pointer-events-none z-10"
-          style={{ background: "var(--red-primary)" }}
-        />
-        <div
-          className="absolute top-9 right-9 w-12 h-12 rounded-xl opacity-40 pointer-events-none z-10"
-          style={{ background: "var(--red-deep)" }}
-        />
       </AnimatedSection>
     </section>
   );

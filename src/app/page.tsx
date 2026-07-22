@@ -24,6 +24,7 @@ export const metadata: Metadata = {
 };
 
 export default function HomePage() {
+  // Trigger cache refresh - team second card inline marginLeft set to auto
   return (
     <>
       <HeroSection />

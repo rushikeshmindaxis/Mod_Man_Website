@@ -62,7 +62,7 @@ export default function TimelineSection() {
         {/* ─── Slider ─── */}
         <div className="relative max-w-6xl mx-auto">
           {/* Main slide */}
-          <div className="overflow-hidden rounded-[2rem] shadow-2xl shadow-gray-200/80 bg-white border border-gray-100">
+          <div style={{ marginBottom: "32px" }} className="overflow-hidden rounded-[2rem] shadow-2xl shadow-gray-200/80 bg-white border border-gray-100">
             <AnimatePresence mode="wait" custom={direction}>
               <motion.div
                 key={event.id}
@@ -111,7 +111,7 @@ export default function TimelineSection() {
                 </div>
 
                 {/* Content half */}
-                <div className="flex-1 flex flex-col justify-center items-center text-center px-10 py-12 lg:py-16 relative overflow-hidden">
+                <div style={{ paddingLeft: "32px", paddingRight: "32px", paddingTop: "48px", paddingBottom: "48px" }} className="flex-1 flex flex-col justify-center items-center text-center relative overflow-hidden">
                   {/* Background chapter number */}
                   <span
                     className="absolute -right-4 -bottom-6 text-[10rem] font-black font-display leading-none select-none pointer-events-none"
@@ -146,7 +146,7 @@ export default function TimelineSection() {
                   </span>
 
                   {/* Title */}
-                  <h3 className="font-display font-black text-[var(--black)] text-4xl lg:text-5xl leading-tight mb-6">
+                  <h3 className="font-display font-black text-[var(--black)] text-2xl sm:text-4xl lg:text-5xl leading-tight mb-4">
                     {event.title}
                   </h3>
 
@@ -157,7 +157,7 @@ export default function TimelineSection() {
                   />
 
                   {/* Description */}
-                  <p className="text-gray-500 text-base lg:text-lg leading-relaxed max-w-md">
+                  <p className="text-gray-500 text-sm sm:text-base lg:text-lg leading-relaxed max-w-md">
                     {event.description}
                   </p>
                 </div>
@@ -203,7 +203,7 @@ export default function TimelineSection() {
           </div>
 
           {/* ─── Thumbnail strip ─── */}
-          <div 
+          <div
             className="hidden lg:flex items-center justify-center gap-3 overflow-x-auto pb-1"
             style={{ marginTop: "40px" }}
           >

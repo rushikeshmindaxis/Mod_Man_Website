@@ -51,15 +51,15 @@ function ProductCardItemComponent({
           </div>
 
           {/* Bottom: Info */}
-          <div className="p-6 sm:p-8 pb-10 sm:pb-12 flex flex-col items-center text-center flex-grow w-full bg-white justify-between min-h-[170px]">
+          <div style={{ paddingBottom: "48px" }} className="p-6 sm:p-8 flex flex-col items-center text-center flex-grow w-full bg-white justify-between min-h-[170px]">
             <div className="flex-grow flex items-center justify-center w-full mb-4">
               <h3 className="font-display text-lg sm:text-xl font-bold text-gray-900 leading-snug group-hover:text-[var(--red-primary)] transition-colors line-clamp-2">
                 {product.name}
               </h3>
             </div>
-            <div className="px-5 py-2.5 rounded-full text-xs font-bold tracking-wider uppercase transition-all duration-300 inline-flex items-center gap-2 border border-gray-200 bg-gray-50 text-gray-700 group-hover:bg-[var(--red-primary)] group-hover:text-white group-hover:border-[var(--red-primary)] group-hover:shadow-md group-hover:shadow-red-900/10">
+            <div style={{ paddingTop: "12px", paddingBottom: "12px", paddingLeft: "28px", paddingRight: "28px", borderRadius: "0px" }} className="rounded-none text-xs font-bold tracking-wider uppercase transition-all duration-300 inline-flex items-center gap-2.5 border border-gray-200 bg-gray-50 text-gray-700 group-hover:bg-[var(--red-primary)] group-hover:text-white group-hover:border-[var(--red-primary)] group-hover:shadow-md group-hover:shadow-red-900/10">
               <span>View Details</span>
-              <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" />
+              <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
             </div>
           </div>
         </motion.div>

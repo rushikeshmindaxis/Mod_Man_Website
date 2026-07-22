@@ -37,8 +37,8 @@ const facts = [
   {
     icon: Award,
     label: "Key Partners",
-    value: "Harshad Pedgaonkar, Deodatta Shelke, Shaunak Shelke",
-    description: "Directing Modular Design, manufacturing quality control, and operations.",
+    value: "Harshad Pedgaonkar, Deodatta Shelke",
+    description: "Directing Modular Design, manufacturing quality control, and CEO management.",
   },
 ];
 

@@ -163,7 +163,7 @@ export default function Navbar() {
         </div>
 
         <div className="container">
-          <div className="flex items-center justify-between h-20">
+          <div style={{ paddingLeft: "24px", paddingRight: "24px" }} className="flex items-center justify-between h-20">
             {/* Logo */}
             <Link href="/" className="flex items-center gap-2 relative z-10">
               <motion.div whileHover={{ scale: 1.02 }} transition={{ duration: 0.2 }}>
@@ -313,7 +313,7 @@ export default function Navbar() {
             {/* Slidebar */}
             <motion.div
               data-lenis-prevent
-              className="fixed inset-y-0 right-0 w-[320px] max-w-[85vw] h-[100dvh] z-50 bg-[var(--black)] flex flex-col shadow-2xl lg:hidden"
+              className="fixed inset-y-0 right-0 w-[290px] sm:w-[320px] h-[100dvh] z-[100] bg-[var(--black)] flex flex-col shadow-2xl lg:hidden"
               initial={{ x: "100%" }}
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
@@ -322,7 +322,7 @@ export default function Navbar() {
               {/* Red accent bar on the left edge */}
               <div className="absolute top-0 left-0 bottom-0 w-1" style={{ background: "linear-gradient(180deg, var(--red-primary), var(--red-deep))" }} />
 
-              <div className="flex items-center justify-between pt-6 pb-6 pl-9 pr-6 border-b border-white/10 relative z-10 shrink-0">
+              <div style={{ paddingLeft: "32px", paddingRight: "32px", paddingTop: "20px", paddingBottom: "20px" }} className="flex items-center justify-between border-b border-white/10 relative z-10 shrink-0">
                 <Image
                   src="/logo.png"
                   alt="Mod Men"
@@ -332,14 +332,15 @@ export default function Navbar() {
                 />
                 <button
                   onClick={() => setMobileOpen(false)}
-                  className="p-2 -mr-2 text-white/80 hover:text-white transition-colors bg-white/5 rounded-full"
+                  style={{ marginRight: "16px" }}
+                  className="p-2 text-white/80 hover:text-white transition-colors bg-white/5 rounded-full"
                   aria-label="Close menu"
                 >
                   <X className="w-5 h-5" />
                 </button>
               </div>
 
-              <div className="container flex flex-col gap-2 pt-20 pb-6 flex-1 overflow-y-auto">
+              <div style={{ paddingLeft: "24px", paddingRight: "24px", paddingTop: "48px", paddingBottom: "24px" }} className="flex flex-col gap-2 flex-1 overflow-y-auto">
                 {navItems.map((item, i) => (
                   <motion.div
                     key={item.href}
@@ -410,7 +411,7 @@ export default function Navbar() {
                 ))}
               </div>
 
-              <div className="container shrink-0 mt-auto pt-6 pb-14 flex flex-col gap-5">
+              <div style={{ paddingBottom: "80px", paddingLeft: "24px", paddingRight: "40px" }} className="shrink-0 mt-auto pt-6 flex flex-col gap-5">
                 <a
                   href={`tel:${company.phone}`}
                   className="btn-ghost btn-ghost-white text-center justify-center"

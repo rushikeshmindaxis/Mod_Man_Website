@@ -42,19 +42,30 @@ export default function ProductDetailPageClient({ product }: ProductDetailPageCl
         }}
       >
         <div className="container">
-          <div className="mb-8">
+          <div style={{ marginBottom: "48px" }}>
             <Link
               href="/products"
-              className="inline-flex items-center text-sm font-accent text-gray-500 hover:text-[var(--red-primary)] transition-colors"
+              style={{
+                paddingTop: "12px",
+                paddingBottom: "12px",
+                paddingLeft: "24px",
+                paddingRight: "24px",
+                borderRadius: "0px",
+                backgroundColor: "var(--red-primary)",
+                color: "#ffffff",
+                display: "inline-flex",
+                alignItems: "center"
+              }}
+              className="text-xs font-accent font-bold uppercase tracking-wider hover:opacity-90 shadow-md hover:shadow-lg transition-all duration-300"
             >
-              <ArrowLeft className="w-4 h-4 mr-2" />
+              <ArrowLeft className="w-4 h-4 mr-2 text-white" />
               Back to Products
             </Link>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 xl:gap-16 items-start">
             {/* Left Column: Product Image Gallery */}
-            <AnimatedSection className="flex flex-col gap-4 sticky top-24">
+            <AnimatedSection className="flex flex-col gap-4 lg:sticky lg:top-32">
               <div className="relative aspect-[4/3] rounded-xl overflow-hidden border border-gray-200 bg-gray-50">
                 <Image
                   src={activeImage}
@@ -105,7 +116,7 @@ export default function ProductDetailPageClient({ product }: ProductDetailPageCl
                   <dl className="divide-y divide-gray-100">
                     {displaySpecs.map((key) => (
                       <div key={key} className="flex justify-between py-6 text-left text-sm sm:text-base">
-                        <dt className="font-accent text-gray-500 font-medium uppercase tracking-wider text-[11px] sm:text-xs w-1/2 flex items-center">
+                        <dt className="font-accent text-gray-800 font-semibold uppercase tracking-wider text-xs sm:text-sm w-1/2 flex items-center">
                           {key}
                         </dt>
                         <dd className="font-bold text-gray-900 w-1/2 text-right">
@@ -150,17 +161,29 @@ export default function ProductDetailPageClient({ product }: ProductDetailPageCl
               >
                 <Link
                   href={`/contact?product=${product.slug}`}
-                  className="btn-primary py-3.5 px-8 flex items-center justify-center gap-2 shadow-lg hover:shadow-xl text-base font-semibold rounded-xl"
+                  style={{
+                    borderRadius: "0px",
+                    paddingTop: "16px",
+                    paddingBottom: "16px",
+                    paddingLeft: "36px",
+                    paddingRight: "36px"
+                  }}
+                  className="btn-primary flex items-center justify-center gap-2 shadow-lg hover:shadow-xl text-base font-semibold rounded-none"
                 >
                   Get a Quote <ArrowLeft className="w-5 h-5 rotate-180" />
                 </Link>
                 <a
-                  href={`tel:${company.phone.replace(/\\s/g, "")}`}
-                  className="py-3.5 px-8 bg-white text-gray-800 hover:text-[var(--red-primary)] text-base font-semibold flex items-center justify-center gap-2 rounded-xl shadow-xs transition-all"
+                  href={`tel:${company.phone.replace(/\s/g, "")}`}
+                  className="bg-white text-gray-800 hover:text-[var(--red-primary)] text-base font-semibold flex items-center justify-center gap-2 rounded-none shadow-xs transition-all"
                   onMouseEnter={() => setIsCallHovered(true)}
                   onMouseLeave={() => setIsCallHovered(false)}
                   style={{
-                    border: isCallHovered ? "3px solid var(--red-primary)" : "3px solid #d1d5db"
+                    border: isCallHovered ? "3px solid var(--red-primary)" : "3px solid #d1d5db",
+                    borderRadius: "0px",
+                    paddingTop: "16px",
+                    paddingBottom: "16px",
+                    paddingLeft: "36px",
+                    paddingRight: "36px"
                   }}
                 >
                   <PhoneCall className="w-5 h-5 text-[var(--red-primary)]" />

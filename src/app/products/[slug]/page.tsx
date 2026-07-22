@@ -11,6 +11,9 @@ export async function generateStaticParams() {
   }));
 }
 
+// Force static export and return 404 for unknown dynamic parameters
+export const dynamicParams = false;
+
 // Generate dynamic metadata for each product
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const resolvedParams = await params;

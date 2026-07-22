@@ -126,7 +126,16 @@ function ProductsPageContent() {
                 <button
                   type="button"
                   onClick={() => setActiveCategory("all")}
-                  className="text-sm font-accent text-gray-500 hover:text-[var(--red-primary)] underline cursor-pointer"
+                  style={{
+                    paddingTop: "14px",
+                    paddingBottom: "14px",
+                    paddingLeft: "32px",
+                    paddingRight: "32px",
+                    borderRadius: "0px",
+                    backgroundColor: "var(--red-primary)",
+                    color: "#ffffff"
+                  }}
+                  className="text-sm font-accent font-bold uppercase tracking-wider hover:opacity-90 shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer"
                 >
                   Show All Products ({products.length})
                 </button>
@@ -134,7 +143,7 @@ function ProductsPageContent() {
             )}
           </AnimatedSection>
 
-          {/* Products List */}
+          {/* Products List - Cache refreshed for border radius removal */}
           <div style={{ marginTop: "48px" }}>
             <StaggerContainer
               key={activeCategory}

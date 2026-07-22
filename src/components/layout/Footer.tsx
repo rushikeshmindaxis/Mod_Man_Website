@@ -322,7 +322,7 @@ export default function Footer() {
 
         {/* ── Centered Bottom Bar ─────────────────────────────────────── */}
         <div
-          className="flex flex-col items-center justify-center gap-3 text-center"
+          className="flex flex-col items-center justify-center gap-3 text-center px-16 lg:px-4 w-full"
           style={{ paddingTop: "1.25rem" }}
         >
           {/* 1 - Copyright */}

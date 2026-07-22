@@ -66,13 +66,6 @@ const team = [
     image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&q=80",
     bio: "Partner & Chief Executive Officer directing modular design innovation, design processes, and project delivery.",
   },
-  {
-    id: "tm-003",
-    name: "Shaunak Shelke",
-    role: "Operations Director",
-    image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&q=80",
-    bio: "Partner overseeing day-to-day manufacturing operations, site executions, and partner relations.",
-  },
 ];
 
 export default function AboutPage() {
@@ -157,36 +150,40 @@ export default function AboutPage() {
               </div>
 
               {/* Certificate Details - Right Side */}
-              <div className="w-full md:w-7/12 space-y-5 md:space-y-6 flex flex-col items-center md:items-start text-center md:text-left">
-                <div className="inline-flex items-center justify-center md:justify-start gap-2 px-4 py-2 bg-[var(--red-primary)]/10 text-[var(--red-primary)] rounded-full text-xs sm:text-sm font-bold tracking-widest uppercase mb-2">
+              <div className="w-full md:w-7/12 flex flex-col items-center md:items-start text-center md:text-left gap-6 sm:gap-8">
+                {/* Tag / Badge */}
+                <div className="inline-flex items-center justify-center md:justify-start gap-2 px-5 py-2.5 bg-[var(--red-primary)]/10 text-[var(--red-primary)] rounded-full text-xs sm:text-sm font-bold tracking-widest uppercase mb-2">
                   <Award className="w-4 h-4" />
                   <span>ISO 9001:2015 Certified</span>
                 </div>
 
-                <h3 className="text-2xl sm:text-3xl lg:text-4xl font-display font-bold text-gray-900 leading-tight">
+                {/* Title */}
+                <h3 className="text-2xl sm:text-3xl lg:text-4xl font-display font-bold text-gray-900 leading-tight py-1">
                   Quality Management System
                 </h3>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 w-full mt-2 sm:mt-4 text-center md:text-left">
-                  <div className="flex flex-col">
-                    <span className="block text-[10px] sm:text-xs font-accent text-[var(--red-primary)] uppercase tracking-wider mb-1 sm:mb-2">Certificate Number</span>
+                {/* Details Grid */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 w-full text-center md:text-left pt-2 pb-4">
+                  <div className="flex flex-col gap-1.5">
+                    <span className="block text-[10px] sm:text-xs font-accent text-[var(--red-primary)] uppercase tracking-wider">Certificate Number</span>
                     <span className="font-semibold text-gray-900 text-sm sm:text-base">20150810122107R</span>
                   </div>
-                  <div className="flex flex-col">
-                    <span className="block text-[10px] sm:text-xs font-accent text-[var(--red-primary)] uppercase tracking-wider mb-1 sm:mb-2">Scope of Activities</span>
+                  <div className="flex flex-col gap-1.5">
+                    <span className="block text-[10px] sm:text-xs font-accent text-[var(--red-primary)] uppercase tracking-wider">Scope of Activities</span>
                     <span className="font-semibold text-gray-900 text-sm leading-relaxed block">Manufacture & Trading for Modular Office, Home Furniture & Chairs</span>
                   </div>
-                  <div className="flex flex-col">
-                    <span className="block text-[10px] sm:text-xs font-accent text-[var(--red-primary)] uppercase tracking-wider mb-1 sm:mb-2">Date of Initial Registration</span>
+                  <div className="flex flex-col gap-1.5">
+                    <span className="block text-[10px] sm:text-xs font-accent text-[var(--red-primary)] uppercase tracking-wider">Date of Initial Registration</span>
                     <span className="font-semibold text-gray-900 text-sm sm:text-base">25th April 2026</span>
                   </div>
-                  <div className="flex flex-col">
-                    <span className="block text-[10px] sm:text-xs font-accent text-[var(--red-primary)] uppercase tracking-wider mb-1 sm:mb-2">Registered Address</span>
+                  <div className="flex flex-col gap-1.5">
+                    <span className="block text-[10px] sm:text-xs font-accent text-[var(--red-primary)] uppercase tracking-wider">Registered Address</span>
                     <span className="font-semibold text-gray-900 text-sm leading-relaxed block">Pisoli, Pune, Maharashtra - 411048</span>
                   </div>
                 </div>
 
-                <p className="text-gray-600 text-base sm:text-lg leading-relaxed pt-8 sm:pt-10 border-t border-gray-100 mt-8 sm:mt-14 w-full">
+                {/* Description Paragraph */}
+                <p className="text-gray-600 text-base sm:text-lg leading-relaxed pt-8 border-t border-gray-100 w-full">
                   MOD MEN has been assessed and certified by RBS Cert. as meeting the rigorous requirements of ISO 9001:2015.
                   This certification stands as a testament to our unwavering commitment to quality in the manufacture and trading of modular office furniture, home furniture, and chairs.
                 </p>
@@ -271,21 +268,25 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ── Team ──────────────────────────────────────────────────────── */}
       <section className="section-padding bg-[var(--gray-50)]">
         <div className="container">
-          <div className="flex flex-col lg:flex-row justify-between items-start lg:items-end gap-6 mb-14">
+          <div className="flex flex-col items-center justify-center gap-6 mb-14 text-center">
             <SectionHeader
+              align="center"
               label="Our Partners"
               title="The People Behind"
               titleAccent="The Excellence"
+              className="mx-auto"
             />
           </div>
-          <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {team.map((member) => (
-              <StaggerItem key={member.id} className="h-full">
+          <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 gap-8 w-full">
+            {team.map((member, index) => (
+              <StaggerItem key={member.id} className="h-full w-full flex">
                 {/* Tall full-image card with rounded corners, overlay gradient, and hover lift */}
-                <div className="relative h-[450px] rounded-3xl overflow-hidden group shadow-md hover:shadow-2xl transition-all duration-500 border border-gray-100 flex flex-col justify-end">
+                <div
+                  style={{ marginLeft: index === 1 ? "auto" : undefined }}
+                  className="relative h-[450px] max-w-[420px] w-full rounded-3xl overflow-hidden group shadow-md hover:shadow-2xl transition-all duration-500 border border-gray-100 flex flex-col justify-end"
+                >
 
                   {/* Background Image - positioned top to avoid head crops */}
                   <Image
