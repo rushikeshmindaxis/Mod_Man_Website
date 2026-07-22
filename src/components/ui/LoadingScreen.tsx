@@ -3,14 +3,18 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 
 export default function LoadingScreen() {
+  const pathname = usePathname();
   const [isLoading, setIsLoading] = useState(true);
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
     // Prevent scroll during loading
-    document.body.style.overflow = "hidden";
+    if (pathname === "/") {
+      document.body.style.overflow = "hidden";
+    }
 
     const interval = setInterval(() => {
       setProgress((prev) => {
@@ -24,15 +28,23 @@ export default function LoadingScreen() {
 
     const timer = setTimeout(() => {
       setIsLoading(false);
-      document.body.style.overflow = "";
+      if (pathname === "/") {
+        document.body.style.overflow = "";
+      }
     }, 2200);
 
     return () => {
       clearInterval(interval);
       clearTimeout(timer);
-      document.body.style.overflow = "";
+      if (pathname === "/") {
+        document.body.style.overflow = "";
+      }
     };
-  }, []);
+  }, [pathname]);
+
+  if (pathname !== "/") {
+    return null;
+  }
 
   return (
     <AnimatePresence>

@@ -171,7 +171,16 @@ export default function Navbar() {
         <div className="container">
           <div style={{ paddingLeft: "24px", paddingRight: "24px" }} className="flex items-center justify-between h-20">
             {/* Logo */}
-            <Link href="/" className="flex items-center gap-2 relative z-10">
+            <Link
+              href="/"
+              className="flex items-center gap-2 relative z-10"
+              onClick={(e) => {
+                if (pathname === "/") {
+                  e.preventDefault();
+                  window.location.reload();
+                }
+              }}
+            >
               <motion.div whileHover={{ scale: 1.02 }} transition={{ duration: 0.2 }}>
                 <Image
                   src="/logo.png"
@@ -195,6 +204,12 @@ export default function Navbar() {
                 >
                   <Link
                     href={item.href}
+                    onClick={(e) => {
+                      if (pathname === "/" && item.href === "/") {
+                        e.preventDefault();
+                        window.location.reload();
+                      }
+                    }}
                     className={cn(
                       "flex items-center gap-1 px-4 py-2 text-base font-accent font-medium rounded-lg transition-all duration-200",
                       linkColor,
@@ -368,6 +383,10 @@ export default function Navbar() {
                             e.preventDefault();
                             setActiveDropdown(activeDropdown === item.href ? null : item.href);
                           } else {
+                            if (pathname === "/" && item.href === "/") {
+                              e.preventDefault();
+                              window.location.reload();
+                            }
                             setMobileOpen(false);
                           }
                         }}

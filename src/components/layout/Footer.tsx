@@ -159,7 +159,7 @@ export default function Footer() {
                   <Link
                     href={link.href}
                     onClick={(e) => {
-                      if (pathname === link.href) {
+                      if (pathname === "/" && link.href === "/") {
                         e.preventDefault();
                         window.location.reload();
                       }
@@ -191,7 +191,7 @@ export default function Footer() {
                   <Link
                     href={link.href}
                     onClick={(e) => {
-                      if (pathname === link.href) {
+                      if (pathname === "/" && link.href === "/") {
                         e.preventDefault();
                         window.location.reload();
                       }

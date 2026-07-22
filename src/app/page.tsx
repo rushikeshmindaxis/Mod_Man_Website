@@ -23,7 +23,7 @@ export const metadata: Metadata = {
 };
 
 export default function HomePage() {
-  // Trigger cache refresh - maps coordinate url query update applied
+  // Trigger cache refresh - loading screen disabled for non-home pages
   return (
     <>
       <HeroSection />
