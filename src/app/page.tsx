@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import HeroSection from "@/components/sections/home/HeroSection";
-import TrustedBySection from "@/components/sections/home/TrustedBySection";
 import WhyChooseUs from "@/components/sections/home/WhyChooseUs";
 import OurProcess from "@/components/sections/home/OurProcess";
 import { IndustriesSection, TestimonialsSection } from "@/components/sections/home/TestimonialsSection";
@@ -24,11 +23,10 @@ export const metadata: Metadata = {
 };
 
 export default function HomePage() {
-  // Trigger cache refresh - Google Maps DMS coordinates updated
+  // Trigger cache refresh - footer developer signature text color updated to off-white
   return (
     <>
       <HeroSection />
-      <TrustedBySection />
       <WhyChooseUs />
       <OurProcess />
       <IndustriesSection />

@@ -24,7 +24,10 @@ const iconMap: Record<string, React.ComponentType<React.SVGProps<SVGSVGElement>>
 
 export default function WhyChooseUs() {
   return (
-    <section className="w-full min-h-screen lg:h-screen bg-white relative overflow-hidden flex flex-col lg:flex-row items-stretch">
+    <section
+      style={{ marginTop: "80px" }}
+      className="w-full min-h-screen lg:h-screen bg-white relative overflow-hidden flex flex-col lg:flex-row items-stretch"
+    >
       {/* Left: Text Content */}
       <div className="w-full lg:w-1/2 flex flex-col justify-center gap-8 lg:gap-10 why-choose-us-left pr-6 sm:pr-12 lg:pr-16 xl:pr-24 py-16 lg:py-12 z-10">
         <SectionHeader

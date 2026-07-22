@@ -10,15 +10,16 @@ export default function TrustedBySection() {
     <section className="relative z-20 bg-transparent py-0 overflow-visible w-full">
       <div className="container max-w-[1300px] px-4 mx-auto">
         {/* Floating Card Showcase overlapping the hero section */}
-        <div className="relative z-20 mt-[-40px] md:mt-[-50px] bg-white border border-gray-100 rounded-3xl p-4 sm:p-6 md:p-8 shadow-[0_15px_45px_-10px_rgba(0,0,0,0.08),_0_8px_20px_-6px_rgba(0,0,0,0.04)] overflow-hidden">
+        <div
+          style={{ paddingTop: "48px" }}
+          className="relative z-20 mt-[-40px] md:mt-[-50px] bg-white border border-gray-100 rounded-3xl px-4 pb-4 sm:px-6 sm:pb-6 md:px-8 md:pb-8 shadow-[0_15px_45px_-10px_rgba(0,0,0,0.08),_0_8px_20px_-6px_rgba(0,0,0,0.04)] overflow-hidden"
+        >
           
           <AnimatedSection>
-            <div className="flex items-center gap-4 mb-8">
-              <div className="flex-1 h-px bg-gray-150" />
-              <p className="label-text text-center text-gray-500 font-accent font-bold uppercase text-[10px] tracking-wider whitespace-nowrap">
+            <div className="flex justify-center mb-10">
+              <p className="label-text text-center text-[var(--red-primary)] font-accent font-bold uppercase text-xs sm:text-sm tracking-widest whitespace-nowrap">
                 Trusted By Leading Brands
               </p>
-              <div className="flex-1 h-px bg-gray-150" />
             </div>
           </AnimatedSection>
 

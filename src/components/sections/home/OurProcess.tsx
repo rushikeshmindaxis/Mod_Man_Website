@@ -95,7 +95,7 @@ export default function OurProcess() {
 
         {/* Mobile: Vertical timeline */}
         <div className="lg:hidden flex flex-col gap-12 relative mt-6">
-          <div className="absolute left-8 top-0 bottom-0 w-px bg-white/10" />
+          <div className="absolute left-8 top-0 bottom-0 w-[2px] bg-gradient-to-b from-[var(--red-primary)] via-[var(--red-deep)] to-[var(--red-primary)] opacity-80" />
 
           {process.map((step, i) => {
             const Icon = iconMap[step.icon] ?? MessageSquare;

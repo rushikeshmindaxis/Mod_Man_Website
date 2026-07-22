@@ -154,6 +154,15 @@ export function TestimonialsSection() {
     setActive(to);
   }, [active]);
 
+  React.useEffect(() => {
+    const timer = setInterval(() => {
+      setDir(1);
+      setActive((prev) => (prev + 1) % testimonials.length);
+    }, 5000); // Auto-slide every 5 seconds
+
+    return () => clearInterval(timer);
+  }, [active, testimonials.length]);
+
   const t = testimonials[active];
 
   return (
@@ -193,9 +202,21 @@ export function TestimonialsSection() {
             </AnimatePresence>
           </div>
 
-          <div
+          <motion.div
             style={{ paddingLeft: "32px", paddingRight: "32px", paddingTop: "40px", paddingBottom: "40px" }}
-            className="w-full lg:w-7/12 bg-white rounded-3xl border border-gray-100 shadow-md flex flex-col justify-between relative z-10 overflow-hidden"
+            className="w-full lg:w-7/12 bg-white rounded-3xl border border-gray-100 shadow-md flex flex-col justify-between relative z-10 overflow-hidden cursor-grab active:cursor-grabbing"
+            drag="x"
+            dragConstraints={{ left: 0, right: 0 }}
+            dragElastic={0.6}
+            onDragEnd={(e, { offset }) => {
+              const swipe = offset.x;
+              const threshold = 50;
+              if (swipe < -threshold) {
+                go((active + 1) % testimonials.length);
+              } else if (swipe > threshold) {
+                go((active - 1 + testimonials.length) % testimonials.length);
+              }
+            }}
           >
             <div className="flex flex-col justify-between h-full w-full">
               {/* Section Header */}
@@ -276,7 +297,7 @@ export function TestimonialsSection() {
                 </div>
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

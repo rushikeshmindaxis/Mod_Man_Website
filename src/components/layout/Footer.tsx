@@ -331,13 +331,13 @@ export default function Footer() {
           </p>
 
           {/* 2 - Developer Credit */}
-          <p className="text-gray-500 text-xs tracking-wide font-accent">
+          <p className="text-gray-400 text-xs tracking-wide font-accent">
             Developed By{" "}
             <a
               href="https://mindaxisinnovation.com/"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-400 hover:text-white transition-colors duration-200 font-semibold"
+              className="text-gray-300 hover:text-white transition-colors duration-200 font-semibold"
             >
               MindAxis Innovation Pvt Ltd.
             </a>

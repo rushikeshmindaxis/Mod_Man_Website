@@ -68,7 +68,7 @@ export default function HeroSection() {
   return (
     <section
       ref={containerRef}
-      className="relative w-full min-h-[500px] sm:min-h-[600px] lg:min-h-0 lg:h-[42.37vw] flex items-center overflow-hidden bg-[var(--black)] pb-[40px] md:pb-[60px] lg:pb-[80px] xl:pb-[100px] 2xl:pb-[120px]"
+      className="relative w-full min-h-[500px] sm:min-h-[600px] lg:min-h-0 lg:h-[42.37vw] flex items-center overflow-hidden bg-[var(--black)] pb-[40px] md:pb-[60px] lg:pb-[80px] xl:pb-[100px] 2xl:pb-[120px] mb-12 sm:mb-16 lg:mb-24"
       style={{ isolation: "isolate" }}
     >
       {/* Background Image Slider with Parallax and Crossfade */}
@@ -111,8 +111,8 @@ export default function HeroSection() {
                     style={{ background: "linear-gradient(90deg, var(--red-primary), var(--red-light))" }}
                   />
                   <span
-                    className="label-text text-center"
-                    style={{ color: "var(--red-primary)", textShadow: "0 1px 4px rgba(0,0,0,0.15)" }}
+                    className="label-text text-center text-sm sm:text-base md:text-lg lg:text-xl font-black tracking-[0.2em] uppercase"
+                    style={{ color: "var(--red-primary)", textShadow: "-1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff" }}
                   >
                     Premium Modular Furniture & Interiors
                   </span>
@@ -134,7 +134,7 @@ export default function HeroSection() {
                     <span className="w-full text-center block" style={{ textShadow: "0 4px 20px rgba(0, 0, 0, 0.95), 0 2px 8px rgba(0, 0, 0, 0.9)" }}>
                       Precision Craft.
                     </span>
-                    <span style={{ color: "var(--red-primary)", textShadow: "0 4px 20px rgba(0, 0, 0, 0.95), 0 2px 8px rgba(0, 0, 0, 0.9)" }} className="w-full text-center block">
+                    <span style={{ color: "var(--red-primary)", textShadow: "0 0 25px rgba(255, 255, 255, 0.95), 0 0 12px rgba(255, 255, 255, 0.9), 0 2px 4px rgba(0, 0, 0, 0.5)" }} className="w-full text-center block">
                       {"Premium Design."}
                     </span>
                     <motion.span

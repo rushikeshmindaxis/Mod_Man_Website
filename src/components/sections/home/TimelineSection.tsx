@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { useState, useRef, useCallback } from "react";
+import { useState, useRef, useCallback, useEffect } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { timeline } from "@/data/index";
 import SectionHeader from "@/components/ui/SectionHeader";
@@ -19,6 +19,15 @@ export default function TimelineSection() {
     },
     [active]
   );
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setDirection(1);
+      setActive((prev) => (prev + 1) % timeline.length);
+    }, 5000); // Auto-slide every 5 seconds
+
+    return () => clearInterval(timer);
+  }, [active]);
 
   const prev = useCallback(() => go((active - 1 + timeline.length) % timeline.length), [active, go]);
   const next = useCallback(() => go((active + 1) % timeline.length), [active, go]);
@@ -72,7 +81,19 @@ export default function TimelineSection() {
                 animate="center"
                 exit="exit"
                 transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
-                className="flex flex-col lg:flex-row min-h-[480px]"
+                drag="x"
+                dragConstraints={{ left: 0, right: 0 }}
+                dragElastic={0.6}
+                onDragEnd={(e, { offset }) => {
+                  const swipe = offset.x;
+                  const threshold = 50;
+                  if (swipe < -threshold) {
+                    next();
+                  } else if (swipe > threshold) {
+                    prev();
+                  }
+                }}
+                className="flex flex-col lg:flex-row min-h-[480px] cursor-grab active:cursor-grabbing w-full"
               >
                 {/* Image half */}
                 <div className="relative lg:w-[55%] h-72 lg:h-auto overflow-hidden shrink-0">
@@ -99,15 +120,7 @@ export default function TimelineSection() {
                     {event.year}
                   </span>
 
-                  {/* Milestone badge */}
-                  {event.milestone && (
-                    <span
-                      className="absolute top-6 right-6 px-3 py-1 rounded-full text-white text-[10px] font-accent font-bold tracking-widest uppercase"
-                      style={{ background: "var(--red-primary)", boxShadow: "0 0 12px rgba(196,30,58,0.6)" }}
-                    >
-                      ★ Milestone
-                    </span>
-                  )}
+
                 </div>
 
                 {/* Content half */}
@@ -138,10 +151,9 @@ export default function TimelineSection() {
 
                   {/* Year chip */}
                   <span
-                    className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-white text-xs font-accent font-bold tracking-[0.15em] uppercase mb-6"
-                    style={{ background: "var(--red-primary)" }}
+                    className="inline-flex items-center gap-2 text-[var(--red-primary)] text-sm sm:text-base font-accent font-extrabold tracking-[0.15em] uppercase mb-6"
                   >
-                    <span className="w-1.5 h-1.5 rounded-full bg-white/70 inline-block" />
+                    <span className="w-2 h-2 rounded-full bg-[var(--red-primary)] inline-block" />
                     {event.year}
                   </span>
 
