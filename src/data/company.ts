@@ -11,9 +11,9 @@ export const company = {
     "Premium modular furniture and interior solutions with world-class craftsmanship.",
   foundedYear: 2019,
   email: "info@modmen.in",
-  phone: "+91 98765 43210",
-  phone2: "+91 94221 62504",
-  whatsapp: "919876543210",
+  phone: "+91 94221 62504",
+  phone2: "+91 94220 24616",
+  whatsapp: "919422162504",
   address: {
     line1: "Sr. No. 09, Gala No. 4",
     line2: "Behind Pravin Mehandi, Dagade Vajan Katta, Pisoli",

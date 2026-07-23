@@ -173,10 +173,7 @@ export default function Footer() {
             <div className="flex flex-col gap-4">
               
               {/* Phone item */}
-              <a
-                href={`tel:${company.phone}`}
-                className="flex items-start gap-4 group"
-              >
+              <div className="flex items-start gap-4 group">
                 <div
                   className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0 mt-0.5 transition-all duration-300 group-hover:bg-[var(--red-primary)] group-hover:scale-105"
                   style={{ background: "var(--red-muted)" }}
@@ -185,14 +182,16 @@ export default function Footer() {
                 </div>
                 <div>
                   <p className="text-xs text-gray-500 tracking-wider uppercase mb-1 font-accent font-bold">Call Us</p>
-                  <p className="text-base text-gray-200 font-accent group-hover:text-white transition-colors duration-200">
+                  <a href={`tel:${company.phone.replace(/[^0-9+]/g, '')}`} className="text-base text-gray-200 font-accent group-hover:text-white transition-colors duration-200 block">
                     {company.phone}
-                  </p>
-                  <p className="text-base text-gray-200 font-accent group-hover:text-white transition-colors duration-200">
-                    {company.phone2}
-                  </p>
+                  </a>
+                  {company.phone2 && (
+                    <a href={`tel:${company.phone2.replace(/[^0-9+]/g, '')}`} className="text-base text-gray-200 font-accent group-hover:text-white transition-colors duration-200 block">
+                      {company.phone2}
+                    </a>
+                  )}
                 </div>
-              </a>
+              </div>
 
               {/* Email item */}
               <a
