@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
-import LoadingScreen from "@/components/ui/LoadingScreen";
+
 import ScrollProgress from "@/components/ui/ScrollProgress";
 import BackToTop from "@/components/ui/BackToTop";
 import FloatingButtons from "@/components/ui/FloatingButtons";
@@ -143,7 +143,7 @@ export default function RootLayout({
           }}
         />
         <SmoothScrollProvider>
-          <LoadingScreen />
+
           <ScrollProgress />
           <Navbar />
           <main className="min-h-screen">{children}</main>

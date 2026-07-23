@@ -56,14 +56,16 @@ const team = [
     id: "tm-001",
     name: "Harshad Pedgaonkar",
     role: "Managing Director",
-    image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&q=80",
+    image: "/Harshad Pedgaonkar Profile.png",
+    objectPosition: "center 30%",
     bio: "Partner & Managing Director driving business strategy, client consulting, and manufacturing quality control at Mod Men.",
   },
   {
     id: "tm-002",
     name: "Deodatta Shelke",
     role: "Company CEO",
-    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&q=80",
+    image: "/Deodatta shelke Profile.png",
+    objectPosition: "center 20%",
     bio: "Partner & Chief Executive Officer directing modular design innovation, design processes, and project delivery.",
   },
 ];
@@ -288,12 +290,13 @@ export default function AboutPage() {
                   className="relative h-[450px] max-w-[420px] w-full rounded-3xl overflow-hidden group shadow-md hover:shadow-2xl transition-all duration-500 border border-gray-100 flex flex-col justify-end"
                 >
 
-                  {/* Background Image - positioned top to avoid head crops */}
+                  {/* Background Image - per-member object position for correct framing */}
                   <Image
                     src={member.image}
                     alt={member.name}
                     fill
-                    className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                    style={{ objectPosition: member.objectPosition ?? "center top" }}
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   />
 

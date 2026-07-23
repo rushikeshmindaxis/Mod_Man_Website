@@ -27,7 +27,7 @@ export const company = {
     "https://maps.google.com/maps?q=18°26'54.0%22N%2073°54'09.7%22E&t=&z=17&ie=UTF8&iwloc=&output=embed",
   social: {
     facebook: "https://facebook.com/modmen",
-    instagram: "https://instagram.com/modmen",
+    instagram: "https://www.instagram.com/modmen_modular_experts/",
     linkedin: "https://linkedin.com/company/modmen",
     youtube: "https://youtube.com/@modmen",
     twitter: "https://twitter.com/modmen",
