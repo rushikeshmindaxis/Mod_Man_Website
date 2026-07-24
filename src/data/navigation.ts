@@ -1,15 +1,28 @@
 // ─── Navigation Data ─────────────────────────────────────────────────────────
 // Edit this file to update navigation links across the entire website.
 
+import { products, productCategories } from "./products";
+
 export interface NavLink {
   label: string;
   href: string;
 }
 
 export interface NavItem extends NavLink {
-  children?: NavLink[];
+  children?: (NavLink & { children?: NavLink[] })[];
   isMegaMenu?: boolean;
 }
+
+const productsChildren = productCategories.map((cat) => ({
+  label: cat.name,
+  href: `/products?category=${cat.slug}`,
+  children: products
+    .filter((p) => p.category === cat.slug)
+    .map((p) => ({
+      label: p.name,
+      href: `/products/${p.slug}`,
+    })),
+}));
 
 export const navItems: NavItem[] = [
   { label: "Home", href: "/" },
@@ -17,10 +30,7 @@ export const navItems: NavItem[] = [
   {
     label: "Products",
     href: "/products",
-    children: [
-      { label: "Office Furniture", href: "/products?category=office-furniture" },
-      { label: "Modular Office Workstation", href: "/products?category=modular-office-workstation" },
-    ],
+    children: productsChildren,
   },
   { label: "Gallery", href: "/gallery" },
   { label: "Contact", href: "/contact" },
@@ -34,8 +44,5 @@ export const footerLinks = {
     { label: "Gallery", href: "/gallery" },
     { label: "Contact", href: "/contact" },
   ],
-  products: [
-    { label: "Office Furniture", href: "/products?category=office-furniture" },
-    { label: "Modular Office Workstation", href: "/products?category=modular-office-workstation" },
-  ],
+  products: productsChildren,
 };

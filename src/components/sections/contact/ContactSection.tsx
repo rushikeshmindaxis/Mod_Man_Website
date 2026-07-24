@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Phone, Mail, MapPin, CheckCircle, MessageSquare, Send } from "lucide-react";
 import { company } from "@/data/company";
@@ -12,6 +12,7 @@ interface FormDataState {
   name: string;
   phone: string;
   email: string;
+  subject: string;
   message: string;
 }
 
@@ -19,6 +20,7 @@ const INITIAL_FORM_DATA: FormDataState = {
   name: "",
   phone: "",
   email: "",
+  subject: "",
   message: "",
 };
 
@@ -27,6 +29,23 @@ const INITIAL_FORM_DATA: FormDataState = {
 export default function ContactSection() {
   const [formState, setFormState] = useState<FormState>("idle");
   const [formData, setFormData] = useState<FormDataState>(INITIAL_FORM_DATA);
+
+  // Math Captcha state variables
+  const [captchaNums, setCaptchaNums] = useState({ num1: 4, num2: 2 });
+  const [captchaInput, setCaptchaInput] = useState("");
+  const [captchaError, setCaptchaError] = useState(false);
+
+  const generateCaptcha = () => {
+    const num1 = Math.floor(Math.random() * 9) + 1;
+    const num2 = Math.floor(Math.random() * 9) + 1;
+    setCaptchaNums({ num1, num2 });
+    setCaptchaInput("");
+    setCaptchaError(false);
+  };
+
+  useEffect(() => {
+    generateCaptcha();
+  }, []);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
@@ -37,6 +56,11 @@ export default function ContactSection() {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (parseInt(captchaInput) !== captchaNums.num1 + captchaNums.num2) {
+      setCaptchaError(true);
+      return;
+    }
+    setCaptchaError(false);
     setFormState("submitting");
 
     // Simulate server request delay
@@ -47,6 +71,7 @@ export default function ContactSection() {
   const handleReset = () => {
     setFormState("idle");
     setFormData(INITIAL_FORM_DATA);
+    generateCaptcha();
   };
 
   return (
@@ -108,6 +133,24 @@ export default function ContactSection() {
                 <a href={`mailto:${company.email}`} className="text-sm sm:text-base font-bold text-gray-800 hover:text-[var(--red-primary)] transition-colors break-all block">
                   {company.email}
                 </a>
+              </div>
+            </div>
+
+            {/* Office Address Card */}
+            <div 
+              className="bg-white border border-gray-200/80 p-6 rounded-2xl flex flex-col items-center justify-center text-center gap-3.5 shadow-sm hover:shadow-md transition-all mb-4 w-full"
+              style={{ minHeight: "140px" }}
+            >
+              <div className="w-12 h-12 rounded-xl bg-red-50 text-[var(--red-primary)] flex items-center justify-center border border-red-100 flex-shrink-0">
+                <MapPin className="w-5 h-5" />
+              </div>
+              <div className="w-full px-2">
+                <p className="text-[10px] font-bold uppercase tracking-wider font-mono text-gray-400 mb-1">
+                  Registered Office Address ({company.name})
+                </p>
+                <p className="text-xs sm:text-sm font-bold text-gray-800 leading-relaxed">
+                  {company.address.full}
+                </p>
               </div>
             </div>
 
@@ -269,7 +312,27 @@ export default function ContactSection() {
                     />
                   </div>
 
-
+                  {/* Subject */}
+                  <div className="flex flex-col gap-2.5">
+                    <label 
+                      className="block text-sm font-bold uppercase tracking-wider text-gray-900 text-center"
+                      style={{ paddingTop: "10px", paddingBottom: "10px" }}
+                    >
+                      Subject
+                    </label>
+                    <input
+                      type="text"
+                      name="subject"
+                      value={formData.subject}
+                      onChange={handleChange}
+                      required
+                      minLength={3}
+                      maxLength={100}
+                      placeholder="e.g. Modular Kitchen Quote / Office Interior Design"
+                      className="w-full rounded-none border border-gray-250 bg-gray-50/50 text-base focus:bg-white focus:border-[var(--red-primary)] focus:ring-1 focus:ring-[var(--red-primary)] transition-all outline-none placeholder:text-gray-400 text-center"
+                      style={{ height: "52px", paddingLeft: "20px", paddingRight: "20px" }}
+                    />
+                  </div>
 
                   {/* Requirements / Message */}
                   <div className="flex flex-col gap-2.5">
@@ -291,6 +354,38 @@ export default function ContactSection() {
                       className="w-full py-4 rounded-none border border-gray-250 bg-gray-50/50 text-base focus:bg-white focus:border-[var(--red-primary)] focus:ring-1 focus:ring-[var(--red-primary)] transition-all resize-none placeholder:text-gray-400 outline-none text-center"
                       style={{ minHeight: "140px", paddingTop: "14px", paddingLeft: "20px", paddingRight: "20px" }}
                     />
+                  </div>
+
+                  {/* Captcha */}
+                  <div className="flex flex-col gap-2.5">
+                    <label 
+                      className="block text-sm font-bold uppercase tracking-wider text-gray-900 text-center"
+                      style={{ paddingTop: "10px", paddingBottom: "10px" }}
+                    >
+                      Security Check: What is {captchaNums.num1} + {captchaNums.num2}?
+                    </label>
+                    <input
+                      type="number"
+                      name="captcha"
+                      value={captchaInput}
+                      onChange={(e) => {
+                        setCaptchaInput(e.target.value);
+                        setCaptchaError(false);
+                      }}
+                      required
+                      placeholder="Enter the sum"
+                      className={`w-full rounded-none border text-base focus:bg-white transition-all outline-none placeholder:text-gray-400 text-center ${
+                        captchaError 
+                          ? "border-red-500 bg-red-50 focus:border-red-500 focus:ring-red-500" 
+                          : "border-gray-250 bg-gray-50/50 focus:border-[var(--red-primary)] focus:ring-[var(--red-primary)]"
+                      }`}
+                      style={{ height: "52px", paddingLeft: "20px", paddingRight: "20px" }}
+                    />
+                    {captchaError && (
+                      <p className="text-red-500 text-xs font-semibold text-center mt-1">
+                        Incorrect answer. Please try again.
+                      </p>
+                    )}
                   </div>
 
                   {/* Submit Button */}

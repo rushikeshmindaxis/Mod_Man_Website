@@ -8,17 +8,17 @@ import AnimatedSection, { StaggerContainer, StaggerItem } from "@/components/ui/
 export default function TrustedBySection() {
   return (
     <section className="relative z-20 bg-transparent py-0 overflow-visible w-full">
-      <div className="container max-w-[1300px] px-4 mx-auto">
+      <div className="container max-w-[1300px] px-8 sm:px-12 md:px-16 mx-auto">
         {/* Floating Card Showcase overlapping the hero section */}
         <div
-          style={{ paddingTop: "48px" }}
-          className="relative z-20 mt-[-40px] md:mt-[-50px] bg-white border border-gray-100 rounded-3xl px-4 pb-4 sm:px-6 sm:pb-6 md:px-8 md:pb-8 shadow-[0_15px_45px_-10px_rgba(0,0,0,0.08),_0_8px_20px_-6px_rgba(0,0,0,0.04)] overflow-hidden"
+          style={{ paddingTop: "48px", paddingBottom: "48px" }}
+          className="relative z-20 mt-[-40px] md:mt-[-50px] bg-white border border-gray-100 rounded-3xl px-8 sm:px-12 md:px-20 shadow-[0_15px_45px_-10px_rgba(0,0,0,0.08),_0_8px_20px_-6px_rgba(0,0,0,0.04)] overflow-hidden md:!pb-[64px]"
         >
           
           <AnimatedSection>
-            <div className="flex justify-center mb-10">
-              <p className="label-text text-center text-[var(--red-primary)] font-accent font-bold uppercase text-xs sm:text-sm tracking-widest whitespace-nowrap">
-                Trusted By Leading Brands
+            <div style={{ marginBottom: "48px" }} className="flex justify-center">
+              <p className="label-text text-center text-black font-accent font-extrabold uppercase text-lg sm:text-xl md:text-2xl tracking-widest whitespace-nowrap">
+                Our Clients
               </p>
             </div>
           </AnimatedSection>
@@ -29,19 +29,18 @@ export default function TrustedBySection() {
               {[...trustedBy, ...trustedBy].map((client, i) => (
                 <div
                   key={`${client.id}-${i}`}
-                  className="flex items-center gap-4 bg-gray-50/50 rounded-2xl px-6 py-[14px] border border-gray-100 flex-shrink-0 hover:border-[var(--red-primary)]/20 hover:bg-white hover:shadow-sm transition-all duration-300"
+                  className="flex items-stretch bg-[var(--red-primary)] rounded-none border border-[var(--red-deep)] h-20 flex-shrink-0 hover:bg-[var(--red-deep)] transition-all duration-300 overflow-hidden"
                 >
                   <div
-                    className="w-9 h-9 rounded-full flex items-center justify-center text-white text-xs font-bold font-accent flex-shrink-0"
-                    style={{ background: "linear-gradient(135deg, var(--red-primary), var(--red-deep))" }}
+                    className="w-16 bg-white text-[var(--red-primary)] text-xl font-bold font-accent flex items-center justify-center flex-shrink-0 border-r border-[var(--red-deep)]"
                   >
                     {client.name.charAt(0)}
                   </div>
-                  <div className="flex-shrink-0">
-                    <p className="text-sm font-accent font-bold text-gray-800 whitespace-nowrap tracking-wide">
+                  <div style={{ paddingLeft: "24px", paddingRight: "32px" }} className="flex flex-col justify-center flex-shrink-0">
+                    <p className="text-base font-accent font-bold text-white whitespace-nowrap tracking-wide">
                       {client.name}
                     </p>
-                    <p className="text-[10px] text-gray-400 font-accent mt-0.5">{client.sector}</p>
+                    <p className="text-xs text-white/85 font-accent mt-1">{client.sector}</p>
                   </div>
                 </div>
               ))}

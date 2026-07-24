@@ -168,9 +168,9 @@ export function TestimonialsSection() {
   return (
     <section className="section-padding bg-gray-50/40 relative overflow-hidden">
       <div className="container">
-        <div className="flex flex-col lg:flex-row gap-12 lg:gap-24 items-stretch max-w-6xl mx-auto min-h-[500px] sm:min-h-[580px] lg:min-h-[620px]">
+        <div className="flex flex-col md:flex-row gap-8 md:gap-12 lg:gap-24 items-stretch max-w-6xl mx-auto min-h-[500px] sm:min-h-[580px] lg:min-h-[620px]">
           {/* ── Left Side: Full Image Card (No Red BG, Full Height & Width Image) ── */}
-          <div className="w-full lg:w-5/12 relative h-[400px] sm:h-96 lg:min-h-[600px] lg:h-full self-stretch rounded-3xl shadow-xl border border-gray-100 overflow-hidden select-none bg-gray-900 shrink-0">
+          <div className="w-full md:w-5/12 relative h-[400px] sm:h-96 md:min-h-[500px] lg:min-h-[600px] md:h-full self-stretch rounded-3xl shadow-xl border border-gray-100 overflow-hidden select-none bg-gray-900 shrink-0">
             <AnimatePresence mode="wait">
               <motion.div
                 key={t.id}
@@ -204,7 +204,7 @@ export function TestimonialsSection() {
 
           <motion.div
             style={{ paddingLeft: "32px", paddingRight: "32px", paddingTop: "40px", paddingBottom: "40px" }}
-            className="w-full lg:w-7/12 bg-white rounded-3xl border border-gray-100 shadow-md flex flex-col justify-between relative z-10 overflow-hidden cursor-grab active:cursor-grabbing"
+            className="w-full md:w-7/12 bg-white rounded-3xl border border-gray-100 shadow-md flex flex-col justify-between relative z-10 overflow-hidden cursor-grab active:cursor-grabbing"
             drag="x"
             dragConstraints={{ left: 0, right: 0 }}
             dragElastic={0.6}

@@ -93,10 +93,10 @@ export default function TimelineSection() {
                     prev();
                   }
                 }}
-                className="flex flex-col lg:flex-row min-h-[480px] cursor-grab active:cursor-grabbing w-full"
+                className="flex flex-col md:flex-row min-h-[480px] cursor-grab active:cursor-grabbing w-full"
               >
                 {/* Image half */}
-                <div className="relative lg:w-[55%] h-72 lg:h-auto overflow-hidden shrink-0">
+                <div className="relative md:w-[30%] lg:w-[30%] h-72 md:h-auto overflow-hidden shrink-0">
                   {event.image && (
                     <>
                       <Image
@@ -107,8 +107,8 @@ export default function TimelineSection() {
                         sizes="(max-width:1024px) 100vw, 55vw"
                         priority
                       />
-                      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-white/30 hidden lg:block" />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent lg:hidden" />
+                      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-white/30 hidden md:block" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent md:hidden" />
                     </>
                   )}
 

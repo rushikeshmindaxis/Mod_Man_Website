@@ -17,6 +17,7 @@ export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [megaMenuOpen, setMegaMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+  const [activeSubDropdown, setActiveSubDropdown] = useState<string | null>(null);
   const pathname = usePathname();
   const megaMenuRef = useRef<HTMLDivElement>(null);
   const megaMenuTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -84,24 +85,32 @@ export default function Navbar() {
         {/* Top Contact Bar */}
         <div
           className={cn(
-            "hidden md:flex bg-white text-gray-600 text-[13px] border-b border-gray-100 font-accent transition-all duration-300 overflow-hidden items-center",
-            showOpaque ? "h-0 py-0 border-none" : "h-[42px] py-2"
+            "hidden md:flex text-sm font-accent transition-all duration-300 items-center h-[42px] py-2",
+            showOpaque
+              ? "bg-[var(--red-primary)] text-white border-b border-red-700/20"
+              : "bg-white text-black border-b border-gray-100"
           )}
         >
           <div className="container flex items-center justify-between">
             <div className="flex items-center gap-6">
               <a
                 href={`tel:${company.phone}`}
-                className="flex items-center gap-2 hover:text-[var(--red-primary)] transition-colors"
+                className={cn(
+                  "flex items-center gap-2 transition-colors font-medium",
+                  showOpaque ? "hover:text-red-100" : "hover:text-[var(--red-primary)]"
+                )}
               >
-                <Phone className="w-3.5 h-3.5 text-[var(--red-primary)]" />
+                <Phone className={cn("w-4 h-4", showOpaque ? "text-white" : "text-[var(--red-primary)]")} />
                 <span>{company.phone}</span>
               </a>
               <a
                 href={`mailto:${company.email}`}
-                className="flex items-center gap-2 hover:text-[var(--red-primary)] transition-colors"
+                className={cn(
+                  "flex items-center gap-2 transition-colors font-medium",
+                  showOpaque ? "hover:text-red-100" : "hover:text-[var(--red-primary)]"
+                )}
               >
-                <Mail className="w-3.5 h-3.5 text-[var(--red-primary)]" />
+                <Mail className={cn("w-4 h-4", showOpaque ? "text-white" : "text-[var(--red-primary)]")} />
                 <span>{company.email}</span>
               </a>
             </div>
@@ -111,7 +120,10 @@ export default function Navbar() {
                 href={company.social.instagram}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-[var(--red-primary)] hover:text-gray-600 transition-colors flex items-center justify-center"
+                className={cn(
+                  "flex items-center justify-center transition-colors",
+                  showOpaque ? "text-white hover:text-red-100" : "text-[var(--red-primary)] hover:text-black"
+                )}
                 aria-label="Instagram"
               >
                 <svg className="w-4.5 h-4.5 transition-transform duration-200 hover:scale-110" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -195,24 +207,50 @@ export default function Navbar() {
                   <AnimatePresence>
                     {item.children && megaMenuOpen && (
                       <motion.div
-                        className="absolute top-full left-0 mt-4 w-[300px] rounded-none shadow-2xl z-50 border border-gray-100 bg-white overflow-hidden"
+                        className="absolute top-full left-0 mt-4 w-[300px] rounded-none shadow-2xl z-50 border border-gray-100 bg-white"
                         style={{ padding: "12px" }}
                         initial={{ opacity: 0, y: 15, scale: 0.95 }}
                         animate={{ opacity: 1, y: 0, scale: 1 }}
                         exit={{ opacity: 0, y: 15, scale: 0.95 }}
                         transition={{ duration: 0.18, ease: [0.22, 1, 0.36, 1] }}
                       >
-                        {item.children.map((child) => {
+                        {item.children.map((child: any) => {
                           const Icon = child.label.includes("Furniture") ? Briefcase : Grid;
+                          const hasSubChildren = child.children && child.children.length > 0;
                           return (
-                            <Link
-                              key={child.href}
-                              href={child.href}
-                              className="flex items-center gap-4 px-4 py-3.5 text-[15px] font-accent font-medium rounded-none transition-all duration-200 group/item text-gray-700 hover:text-[var(--red-primary)] hover:bg-red-50"
-                            >
-                              <Icon className="w-5 h-5 text-gray-400 group-hover/item:text-[var(--red-primary)] transition-colors duration-200" />
-                              <span>{child.label}</span>
-                            </Link>
+                            <div key={child.href} className="relative group/sub">
+                              <Link
+                                href={child.href}
+                                className="flex items-center justify-between gap-4 px-4 py-3.5 text-[15px] font-accent font-medium rounded-none transition-all duration-200 group-hover/sub:text-[var(--red-primary)] group-hover/sub:bg-red-50 text-gray-700 w-full"
+                              >
+                                <div className="flex items-center gap-4">
+                                  <Icon className="w-5 h-5 text-gray-400 group-hover/sub:text-[var(--red-primary)] transition-colors duration-200" />
+                                  <span>{child.label}</span>
+                                </div>
+                                {hasSubChildren && (
+                                  <ChevronDown className="w-4 h-4 -rotate-90 text-gray-400 group-hover/sub:text-[var(--red-primary)]" />
+                                )}
+                              </Link>
+
+                              {hasSubChildren && (
+                                <div
+                                  data-lenis-prevent="true"
+                                  className="absolute top-0 left-full hidden group-hover/sub:flex w-[350px] bg-white border border-gray-100 shadow-2xl z-50 max-h-[400px] overflow-y-auto flex-col rounded-xl rounded-l-none"
+                                  style={{ marginLeft: "2px", padding: "16px", gap: "4px" }}
+                                >
+                                  {child.children.map((subChild: any) => (
+                                    <Link
+                                      key={subChild.href}
+                                      href={subChild.href}
+                                      className="block text-[14px] font-accent text-gray-600 hover:text-[var(--red-primary)] hover:bg-red-50 transition-colors rounded-lg"
+                                      style={{ padding: "10px 16px" }}
+                                    >
+                                      {subChild.label}
+                                    </Link>
+                                  ))}
+                                </div>
+                              )}
+                            </div>
                           );
                         })}
                       </motion.div>
@@ -224,16 +262,6 @@ export default function Navbar() {
 
             {/* CTA */}
             <div className="hidden lg:flex items-center gap-3">
-              <a
-                href={`tel:${company.phone}`}
-                className={cn(
-                  "flex items-center gap-2 text-sm font-accent font-medium transition-colors duration-200",
-                  linkColor
-                )}
-              >
-                <Phone className="w-4 h-4" />
-                {company.phone}
-              </a>
               <Link
                 href="/contact"
                 className={cn(
@@ -363,24 +391,62 @@ export default function Navbar() {
                             className="overflow-hidden"
                           >
                             <div className="flex flex-col gap-2 mt-4 pt-2">
-                              {item.children.map((child) => {
+                              {item.children.map((child: any) => {
                                 const Icon = child.label.includes("Furniture") ? Briefcase : Grid;
                                 const isChildActive = pathname === child.href;
+                                const hasSubChildren = child.children && child.children.length > 0;
                                 return (
-                                  <Link
-                                    key={child.href}
-                                    href={child.href}
-                                    onClick={() => setMobileOpen(false)}
-                                    className={cn(
-                                      "flex items-center justify-center gap-3 py-2.5 px-3.5 text-sm font-accent font-medium rounded-lg transition-all duration-200 group/item",
-                                      isChildActive
-                                        ? "text-[var(--red-primary)] bg-[var(--red-primary)]/10"
-                                        : "text-white/75 hover:text-white hover:bg-white/10"
-                                    )}
-                                  >
-                                    <Icon className="w-4 h-4 text-white/50 group-hover/item:text-[var(--red-primary)] transition-colors duration-200 flex-shrink-0" />
-                                    <span className="whitespace-normal leading-normal">{child.label}</span>
-                                  </Link>
+                                  <div key={child.href}>
+                                    <Link
+                                      href={child.href}
+                                      onClick={(e) => {
+                                        if (hasSubChildren) {
+                                          e.preventDefault();
+                                          setActiveSubDropdown(activeSubDropdown === child.href ? null : child.href);
+                                        } else {
+                                          setMobileOpen(false);
+                                        }
+                                      }}
+                                      className={cn(
+                                        "flex items-center justify-between gap-3 py-2.5 px-3.5 text-sm font-accent font-medium rounded-lg transition-all duration-200 group/item",
+                                        isChildActive
+                                          ? "text-[var(--red-primary)] bg-[var(--red-primary)]/10"
+                                          : "text-white/75 hover:text-white hover:bg-white/10"
+                                      )}
+                                    >
+                                      <div className="flex items-center gap-3">
+                                        <Icon className="w-4 h-4 text-white/50 group-hover/item:text-[var(--red-primary)] transition-colors duration-200 flex-shrink-0" />
+                                        <span className="whitespace-normal leading-normal">{child.label}</span>
+                                      </div>
+                                      {hasSubChildren && (
+                                        <ChevronDown className={cn("w-3.5 h-3.5 transition-transform duration-200 text-white/50", activeSubDropdown === child.href ? "rotate-180" : "")} />
+                                      )}
+                                    </Link>
+                                    <AnimatePresence>
+                                      {hasSubChildren && activeSubDropdown === child.href && (
+                                        <motion.div
+                                          initial={{ height: 0, opacity: 0 }}
+                                          animate={{ height: "auto", opacity: 1 }}
+                                          exit={{ height: 0, opacity: 0 }}
+                                          transition={{ duration: 0.2 }}
+                                          className="overflow-hidden"
+                                        >
+                                          <div className="flex flex-col gap-1 pl-10 pr-2 pt-1 pb-2">
+                                            {child.children.map((subChild: any) => (
+                                              <Link
+                                                key={subChild.href}
+                                                href={subChild.href}
+                                                onClick={() => setMobileOpen(false)}
+                                                className="py-1.5 text-[13px] font-accent text-white/60 hover:text-white transition-colors"
+                                              >
+                                                {subChild.label}
+                                              </Link>
+                                            ))}
+                                          </div>
+                                        </motion.div>
+                                      )}
+                                    </AnimatePresence>
+                                  </div>
                                 );
                               })}
                             </div>
@@ -393,13 +459,6 @@ export default function Navbar() {
               </div>
 
               <div style={{ paddingBottom: "80px", paddingLeft: "24px", paddingRight: "40px" }} className="shrink-0 mt-auto pt-6 flex flex-col gap-5">
-                <a
-                  href={`tel:${company.phone}`}
-                  className="btn-ghost btn-ghost-white text-center justify-center"
-                >
-                  <Phone className="w-4 h-4" />
-                  {company.phone}
-                </a>
                 <Link
                   href="/contact"
                   className="btn-primary text-center justify-center"

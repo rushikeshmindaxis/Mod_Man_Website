@@ -11,13 +11,14 @@ export async function generateStaticParams() {
   }));
 }
 
-// Force static export and return 404 for unknown dynamic parameters
-export const dynamicParams = false;
+// Allow dynamic params to fix 404 caching issues during dev
+export const dynamicParams = true;
 
 // Generate dynamic metadata for each product
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const resolvedParams = await params;
-  const product = getProductBySlug(resolvedParams.slug);
+  const cleanSlug = decodeURIComponent(resolvedParams.slug).trim().replace(/\s+/g, '-').replace(/-+/g, '-');
+  const product = getProductBySlug(cleanSlug);
 
   if (!product) {
     return {
@@ -56,7 +57,8 @@ import Script from "next/script";
 
 export default async function ProductDetailPage({ params }: { params: Promise<{ slug: string }> }) {
   const resolvedParams = await params;
-  const product = getProductBySlug(resolvedParams.slug);
+  const cleanSlug = decodeURIComponent(resolvedParams.slug).trim().replace(/\s+/g, '-').replace(/-+/g, '-');
+  const product = getProductBySlug(cleanSlug);
 
   if (!product) {
     notFound();

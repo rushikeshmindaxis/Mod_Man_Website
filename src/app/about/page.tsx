@@ -7,6 +7,7 @@ import { usps } from "@/data/index";
 import SectionHeader from "@/components/ui/SectionHeader";
 import AnimatedSection, { StaggerContainer, StaggerItem } from "@/components/ui/AnimatedSection";
 import PageHero from "@/components/sections/PageHero";
+import TrustedBySection from "@/components/sections/home/TrustedBySection";
 
 const uspIconMap: Record<string, React.ComponentType<React.SVGProps<SVGSVGElement>>> = {
   Award,
@@ -84,8 +85,8 @@ export default function AboutPage() {
       {/* ── Company Story ──────────────────────────────────────────────── */}
       <section className="section-padding bg-white">
         <div className="container">
-          <div className="grid grid-cols-1 lg:grid-cols-5 gap-16 items-center">
-            <div className="lg:col-span-2 w-full">
+          <div className="grid grid-cols-1 lg:grid-cols-10 gap-16 items-center">
+            <div className="lg:col-span-3 w-full">
               <AnimatedSection direction="right">
                 <div className="relative">
                   <div className="relative h-[400px] lg:h-[480px] rounded-3xl overflow-hidden">
@@ -100,9 +101,9 @@ export default function AboutPage() {
               </AnimatedSection>
             </div>
 
-            <div className="lg:col-span-3">
+            <div className="lg:col-span-7">
               <SectionHeader
-                label="Our Story"
+                label="About Company"
                 title="Built on a Foundation of"
                 titleAccent="Excellence"
                 subtitle="What began as a small workshop in Pune has grown into one of India's most trusted modular furniture studios."
@@ -124,6 +125,7 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
+      <TrustedBySection />
       {/* ── Certifications ────────────────────────────────────────────── */}
       <section className="section-padding bg-gray-50">
         <div className="container">
@@ -267,6 +269,84 @@ export default function AboutPage() {
             </div>
 
           </div>
+        </div>
+      </section>
+
+      {/* ── Corporate Profile / Company Facts ─────────────────────────── */}
+      <section className="section-padding bg-white border-b border-gray-100">
+        <div className="container">
+          <div className="flex flex-col items-center justify-center gap-6 mb-12 text-center">
+            <SectionHeader
+              align="center"
+              label="Below Our Purpose"
+              title="Key Facts &"
+              titleAccent="Registration"
+              className="mx-auto"
+            />
+          </div>
+
+          <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <StaggerItem>
+              <div className="relative overflow-hidden rounded-2xl border border-gray-150 shadow-sm hover:shadow-md transition-all duration-300 aspect-[4/3] bg-gray-50">
+                <Image
+                  src="/fact_nature.png"
+                  alt="Nature of Business"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+            </StaggerItem>
+            <StaggerItem>
+              <div className="relative overflow-hidden rounded-2xl border border-gray-150 shadow-sm hover:shadow-md transition-all duration-300 aspect-[4/3] bg-gray-50">
+                <Image
+                  src="/fact_partners.png"
+                  alt="Partners"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+            </StaggerItem>
+            <StaggerItem>
+              <div className="relative overflow-hidden rounded-2xl border border-gray-150 shadow-sm hover:shadow-md transition-all duration-300 aspect-[4/3] bg-gray-50">
+                <Image
+                  src="/fact_turnover.png"
+                  alt="Annual Turnover"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+            </StaggerItem>
+            <StaggerItem>
+              <div className="relative overflow-hidden rounded-2xl border border-gray-150 shadow-sm hover:shadow-md transition-all duration-300 aspect-[4/3] bg-gray-50">
+                <Image
+                  src="/fact_employees.png"
+                  alt="Number of Employees"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+            </StaggerItem>
+            <StaggerItem>
+              <div className="relative overflow-hidden rounded-2xl border border-gray-150 shadow-sm hover:shadow-md transition-all duration-300 aspect-[4/3] bg-gray-50">
+                <Image
+                  src="/fact_legal.png"
+                  alt="Legal Status of Firm"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+            </StaggerItem>
+            <StaggerItem>
+              <div className="relative overflow-hidden rounded-2xl border border-gray-150 shadow-sm hover:shadow-md transition-all duration-300 aspect-[4/3] bg-gray-50">
+                <Image
+                  src="/fact_gst.png"
+                  alt="GST Registration"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+            </StaggerItem>
+          </StaggerContainer>
         </div>
       </section>
 

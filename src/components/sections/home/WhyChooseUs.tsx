@@ -29,7 +29,7 @@ export default function WhyChooseUs() {
       className="w-full min-h-screen lg:h-screen bg-white relative overflow-hidden flex flex-col lg:flex-row items-stretch"
     >
       {/* Left: Text Content */}
-      <div className="w-full lg:w-1/2 flex flex-col justify-center gap-8 lg:gap-10 why-choose-us-left pr-6 sm:pr-12 lg:pr-16 xl:pr-24 py-16 lg:py-12 z-10">
+      <div className="w-full lg:w-[70%] flex flex-col justify-center gap-8 lg:gap-10 why-choose-us-left pr-6 sm:pr-12 lg:pr-16 xl:pr-24 py-16 lg:py-12 z-10">
         <SectionHeader
           label="Why Choose Us"
           title="The Mod Men"
@@ -64,7 +64,7 @@ export default function WhyChooseUs() {
       </div>
 
       {/* Right: Full-Bleed Image spanning full height and width */}
-      <AnimatedSection className="w-full lg:w-1/2 relative min-h-[450px] lg:min-h-0 self-stretch" direction="left" delay={0.2}>
+      <AnimatedSection className="w-full lg:w-[30%] relative min-h-[450px] lg:min-h-0 self-stretch" direction="left" delay={0.2}>
         <div className="absolute inset-0 w-full h-full">
           <Image
             src="/modmen-difference.png"

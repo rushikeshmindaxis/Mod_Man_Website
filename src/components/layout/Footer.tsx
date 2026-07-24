@@ -3,11 +3,14 @@
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
+import { useState } from "react";
 import {
   Phone,
   Mail,
   MapPin,
   ArrowRight,
+  ChevronDown,
+  Star,
 } from "lucide-react";
 import { company } from "@/data/company";
 import { footerLinks } from "@/data/navigation";
@@ -15,6 +18,7 @@ import { footerLinks } from "@/data/navigation";
 export default function Footer() {
   const currentYear = new Date().getFullYear();
   const pathname = usePathname();
+  const [openCategory, setOpenCategory] = useState<string | null>(null);
 
   return (
     <footer className="bg-[var(--black)] text-white relative overflow-hidden">
@@ -43,8 +47,8 @@ export default function Footer() {
       <div
         className="container relative z-10"
         style={{
-          paddingTop: "2.5rem",
-          paddingBottom: "2rem",
+          paddingTop: "5rem",
+          paddingBottom: "4.5rem",
         }}
       >
         
@@ -95,6 +99,17 @@ export default function Footer() {
                 </svg>
               </a>
             </div>
+
+            {/* Google Review Button */}
+            <a
+              href="https://www.google.com/maps/search/?api=1&query=Mod+Men+Pisoli+Pune"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-4 px-8 py-4 rounded-none text-base font-accent font-bold text-white bg-[#4285F4] hover:bg-[#357ae8] transition-all duration-300 flex items-center gap-3.5 shadow-md hover:scale-[1.02] border border-blue-400/20"
+            >
+              <Star className="w-5 h-5 fill-[#fbbc05] text-[#fbbc05] flex-shrink-0" />
+              <span>Review Us on Google</span>
+            </a>
           </div>
 
           {/* Column 2: Quick Links */}
@@ -138,24 +153,57 @@ export default function Footer() {
               />
               Products
             </h4>
-            <ul className="flex flex-col gap-3">
-              {footerLinks.products.map((link) => (
-                <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    onClick={(e) => {
-                      if (pathname === link.href || pathname.startsWith(link.href + "/")) {
-                        e.preventDefault();
-                        window.location.reload();
-                      }
-                    }}
-                    className="flex items-center gap-2 text-base text-gray-300 hover:text-white transition-colors duration-250 group"
-                  >
-                    <ArrowRight className="w-3.5 h-3.5 text-[var(--red-primary)] -translate-x-1 opacity-0 group-hover:translate-x-0 group-hover:opacity-100 transition-all duration-250" />
-                    <span className="group-hover:translate-x-1 transition-transform duration-250 font-accent">
-                      {link.label}
-                    </span>
-                  </Link>
+            <ul className="flex flex-col gap-5">
+              {footerLinks.products.map((category: any) => (
+                <li key={category.href} className="flex flex-col gap-2">
+                  <div className="flex items-center justify-between group cursor-pointer" onClick={() => setOpenCategory(openCategory === category.href ? null : category.href)}>
+                    <Link
+                      href={category.href}
+                      onClick={(e) => {
+                        // We still allow navigation if they click exactly on the text, or they can just use the area to toggle
+                        if (pathname === category.href || pathname.startsWith(category.href + "/")) {
+                          // Allow refresh or default
+                        } else {
+                           e.stopPropagation(); // Stop propagation so it navigates instead of toggling if they clicked the exact link
+                        }
+                      }}
+                      className="flex items-center gap-2 text-base text-gray-200 font-bold hover:text-white transition-colors duration-250"
+                    >
+                      <ArrowRight className="w-3.5 h-3.5 text-[var(--red-primary)] -translate-x-1 opacity-0 group-hover:translate-x-0 group-hover:opacity-100 transition-all duration-250" />
+                      <span className="group-hover:translate-x-1 transition-transform duration-250 font-accent">
+                        {category.label}
+                      </span>
+                    </Link>
+                    {category.children && category.children.length > 0 && (
+                      <button className="p-1 text-gray-400 hover:text-white transition-colors">
+                        <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${openCategory === category.href ? 'rotate-180' : ''}`} />
+                      </button>
+                    )}
+                  </div>
+                  
+                  {category.children && category.children.length > 0 && (
+                    <div 
+                      className={`transition-all duration-300 ${openCategory === category.href ? 'opacity-100 mt-2' : 'opacity-0'}`}
+                      style={{ 
+                        maxHeight: openCategory === category.href ? '280px' : '0px',
+                        overflowY: openCategory === category.href ? 'auto' : 'hidden'
+                      }}
+                      data-lenis-prevent="true"
+                    >
+                      <ul className="flex flex-col gap-2 pl-4 border-l border-white/10 ml-2">
+                        {category.children.map((subChild: any) => (
+                          <li key={subChild.href}>
+                            <Link
+                              href={subChild.href}
+                              className="text-sm text-gray-400 hover:text-[var(--red-primary)] transition-colors duration-200 block py-1"
+                            >
+                              {subChild.label}
+                            </Link>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
                 </li>
               ))}
             </ul>

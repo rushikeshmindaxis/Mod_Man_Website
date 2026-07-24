@@ -63,16 +63,16 @@ export default function ProductDetailPageClient({ product }: ProductDetailPageCl
             </Link>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 xl:gap-16 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-10 gap-12 xl:gap-16 items-start">
             {/* Left Column: Product Image Gallery */}
-            <AnimatedSection className="flex flex-col gap-4 lg:sticky lg:top-32">
+            <AnimatedSection className="lg:col-span-3 flex flex-col gap-4 lg:sticky lg:top-32 w-full">
               <div className="relative aspect-[4/3] rounded-xl overflow-hidden border border-gray-200 bg-gray-50">
                 <Image
                   src={activeImage}
                   alt={product.name}
                   fill
                   className="object-contain p-4 transition-opacity duration-300"
-                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  sizes="(max-width: 1024px) 100vw, 30vw"
                   priority
                 />
               </div>
@@ -83,8 +83,8 @@ export default function ProductDetailPageClient({ product }: ProductDetailPageCl
                     key={idx}
                     onClick={() => setActiveImage(img)}
                     className={`relative w-20 h-20 rounded-lg overflow-hidden border-2 flex-shrink-0 transition-all duration-200 ${activeImage === img
-                        ? "border-[var(--red-primary)] shadow-md scale-105"
-                        : "border-gray-200 hover:border-gray-400"
+                      ? "border-[var(--red-primary)] shadow-md scale-105"
+                      : "border-gray-200 hover:border-gray-400"
                       }`}
                     aria-label={`View image ${idx + 1}`}
                   >
@@ -95,8 +95,8 @@ export default function ProductDetailPageClient({ product }: ProductDetailPageCl
             </AnimatedSection>
 
             {/* Right Column: Product Details & Specs */}
-            <AnimatedSection delay={0.2} className="flex flex-col items-center text-center w-full">
-              <h1 
+            <AnimatedSection delay={0.2} className="lg:col-span-7 flex flex-col items-center text-center w-full">
+              <h1
                 className="text-3xl md:text-4xl font-display font-bold text-gray-900 text-center"
                 style={{ marginBottom: "40px" }}
               >
@@ -129,7 +129,7 @@ export default function ProductDetailPageClient({ product }: ProductDetailPageCl
               )}
 
               {/* Description */}
-              <div 
+              <div
                 className="border-t border-gray-200 w-full flex flex-col items-center text-center mb-10"
                 style={{
                   marginTop: "24px",
@@ -155,7 +155,7 @@ export default function ProductDetailPageClient({ product }: ProductDetailPageCl
               </div>
 
               {/* Action Buttons (Shifted to the bottom) */}
-              <div 
+              <div
                 className="flex flex-wrap justify-center gap-4 w-full"
                 style={{ marginTop: "40px" }}
               >
